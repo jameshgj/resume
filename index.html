@@ -19,7 +19,7 @@
   --bg-card-h: rgba(255,255,255,0.06);
   --text: #f0f0f5;
   --text-2: #b0b0c8;
-  --text-3: #6a6a88;
+  --text-3: #8585a3;
   --accent: #7c6aef;
   --accent-2: #9b8afb;
   --accent-glow: rgba(124,106,239,0.15);
@@ -107,7 +107,7 @@ nav.scrolled { background:rgba(6,6,11,0.92); box-shadow:0 8px 48px rgba(0,0,0,0.
 
 /* ═══ LAYOUT ═══ */
 .wrap { position:relative; z-index:1; max-width:1120px; margin:0 auto; padding:0 2rem; }
-section { padding:7rem 0; position:relative; }
+section { padding:5rem 0; position:relative; }
 
 /* ═══ HERO ═══ */
 .hero { min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding-top:64px; }
@@ -302,7 +302,7 @@ section { padding:7rem 0; position:relative; }
 .hl-win {
   padding:1rem 1.25rem; border-radius:var(--r-sm);
   border:1px solid var(--border); background:rgba(255,255,255,0.02);
-  transition:all 0.3s;
+  border-left:3px solid var(--accent); transition:all 0.3s;
 }
 .hl-win:hover { background:rgba(255,255,255,0.05); border-color:var(--border-h); }
 .hl-win-metric {
@@ -524,9 +524,9 @@ footer {
   transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1);
 }
 .reveal.vis { opacity:1; transform:translateY(0); }
-.d1 { transition-delay:0.08s; } .d2 { transition-delay:0.16s; }
-.d3 { transition-delay:0.24s; } .d4 { transition-delay:0.32s; }
-.d5 { transition-delay:0.40s; } .d6 { transition-delay:0.48s; }
+.d1 { transition-delay:0.05s; } .d2 { transition-delay:0.10s; }
+.d3 { transition-delay:0.15s; } .d4 { transition-delay:0.20s; }
+.d5 { transition-delay:0.25s; } .d6 { transition-delay:0.30s; }
 
 @keyframes heroReveal {
   from { opacity:0; transform:translateY(60px) scale(0.97); }
@@ -560,6 +560,8 @@ footer {
 /* ═══ EXPANDABLE HEADLINE WINS ═══ */
 .hl-win { cursor:pointer; position:relative; transition:all 0.3s; }
 .hl-win:hover { background:rgba(255,255,255,0.05); border-color:var(--border-h); }
+.hl-tiktok .hl-win { border-left-color:var(--tiktok-c); }
+.hl-google .hl-win { border-left-color:var(--g-blue); }
 .hl-win-metric { display:flex; align-items:center; justify-content:space-between; }
 .hl-win .expand-icon {
   width:18px; height:18px; border-radius:50%;
@@ -602,7 +604,7 @@ footer {
 /* Big company-change node */
 .tl-company-node {
   position:absolute; left:7px; width:30px; height:30px;
-  border-radius:50%; z-index:3; top:-2px;
+  border-radius:50%; z-index:3; top:4px;
   display:flex; align-items:center; justify-content:center;
   transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
 }
@@ -641,8 +643,8 @@ footer {
 /* Date labels on the timeline */
 .tl-date-label {
   position:absolute; left:-8px; transform:translateX(-100%);
-  font-family:var(--font-m); font-size:0.68rem; color:var(--text-3);
-  white-space:nowrap; font-weight:500; letter-spacing:0.5px;
+  font-family:var(--font-m); font-size:0.75rem; color:var(--text-2);
+  white-space:nowrap; font-weight:600; letter-spacing:0.5px;
 }
 
 /* Break gap between company sections */
@@ -663,10 +665,12 @@ footer {
   text-transform:uppercase; letter-spacing:3px; font-weight:600; opacity:0.4;
 }
 
-/* Earlier Career mega-banner */
+/* Earlier Career mega-banner — toned down */
+.mb-earlier { padding:3rem 0; }
 .mb-earlier::before {
-  background:linear-gradient(135deg, rgba(106,106,136,0.06) 0%, rgba(148,163,184,0.04) 100%);
+  background:linear-gradient(135deg, rgba(106,106,136,0.03) 0%, rgba(148,163,184,0.02) 100%);
 }
+.mb-earlier .mb-inner { opacity:0.85; }
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width:960px) {
@@ -695,6 +699,15 @@ footer {
   .tl-date-label { display:none; }
   .tl-break { padding-left:36px; }
   .tl-break::before { left:11px; }
+}
+
+/* ═══ ACCESSIBILITY ═══ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  .reveal { opacity:1; transform:none; }
+}
+.pillar:focus-visible, .hl-win:focus-visible, .b-card:focus-visible {
+  outline:2px solid var(--accent); outline-offset:2px;
 }
 </style>
 </head>
@@ -756,7 +769,7 @@ footer {
 
       <!-- Pillar cards with CUSTOM SVG ICONS — clickable -->
       <div class="pillars">
-        <div class="pillar" onclick="openModal('Youth Safety Lead','Led TikTok\'s youth safety products including parental controls, Kids Mode, and age-based feature access. Delivered patent-pending blocking controls and transformed content pipelines with ML, achieving 3× video approval rates.')">
+        <div class="pillar" tabindex="0" role="button" onclick="openModal('Youth Safety Lead','Led TikTok\'s youth safety products including parental controls, Kids Mode, and age-based feature access. Delivered patent-pending blocking controls and transformed content pipelines with ML, achieving 3× video approval rates.')">
           <div class="pillar-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2l8 4v6c0 5.25-3.4 10.1-8 12-4.6-1.9-8-6.75-8-12V6l8-4z"/>
@@ -765,9 +778,9 @@ footer {
           </div>
           <h3>Youth Safety Lead</h3>
           <p>Parental Controls · Kids Mode</p>
-          <span class="pillar-expand-hint" style="position:relative;display:block;margin-top:0.5rem;font-size:0.75rem;color:var(--accent-2);opacity:0.5;">+</span>
+          <span class="pillar-expand-hint" style="position:relative;display:block;margin-top:0.5rem;font-size:0.8rem;color:var(--accent-2);opacity:0.75;font-weight:600;">Click to expand +</span>
         </div>
-        <div class="pillar" onclick="openModal('Multi-Geo Experience','Managed products across the US, UK, and China — from Silicon Valley to London to Shanghai. Built and scaled products serving users across multiple regulatory environments and cultural contexts.')">
+        <div class="pillar" tabindex="0" role="button" onclick="openModal('Multi-Geo Experience','Managed products across the US, UK, and China — from Silicon Valley to London to Shanghai. Built and scaled products serving users across multiple regulatory environments and cultural contexts.')">
           <div class="pillar-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"/>
@@ -777,9 +790,9 @@ footer {
           </div>
           <h3>Multi-Geo</h3>
           <p>US · UK · China</p>
-          <span class="pillar-expand-hint" style="position:relative;display:block;margin-top:0.5rem;font-size:0.75rem;color:var(--accent-2);opacity:0.5;">+</span>
+          <span class="pillar-expand-hint" style="position:relative;display:block;margin-top:0.5rem;font-size:0.8rem;color:var(--accent-2);opacity:0.75;font-weight:600;">Click to expand +</span>
         </div>
-        <div class="pillar" onclick="openModal('ML/AI Builder','Built ML-powered products at both TikTok and Google. At TikTok, used ML to transform Kids Mode content pipelines. At Google, built an ML-powered prospecting product from zero to $135M annual revenue.')">
+        <div class="pillar" tabindex="0" role="button" onclick="openModal('ML/AI Builder','Built ML-powered products at both TikTok and Google. At TikTok, used ML to transform Kids Mode content pipelines. At Google, built an ML-powered prospecting product from zero to $135M annual revenue.')">
           <div class="pillar-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2a6 6 0 0 1 6 6c0 2.2-1.2 4.1-3 5.2V16a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-2.8C7.2 12.1 6 10.2 6 8a6 6 0 0 1 6-6z"/>
@@ -791,9 +804,9 @@ footer {
           </div>
           <h3>ML/AI Builder</h3>
           <p>Privacy · Safety · Ads</p>
-          <span class="pillar-expand-hint" style="position:relative;display:block;margin-top:0.5rem;font-size:0.75rem;color:var(--accent-2);opacity:0.5;">+</span>
+          <span class="pillar-expand-hint" style="position:relative;display:block;margin-top:0.5rem;font-size:0.8rem;color:var(--accent-2);opacity:0.75;font-weight:600;">Click to expand +</span>
         </div>
-        <div class="pillar" onclick="openModal('Regulatory Expert','Deep expertise in global privacy regulation including GDPR, DSA, and CCPA. Designed unified privacy control systems, led regulatory compliance for Australia\'s under-16 ban, and launched best-in-class data portability systems.')">
+        <div class="pillar" tabindex="0" role="button" onclick="openModal('Regulatory Expert','Deep expertise in global privacy regulation including GDPR, DSA, and CCPA. Designed unified privacy control systems, led regulatory compliance for Australia\'s under-16 ban, and launched best-in-class data portability systems.')">
           <div class="pillar-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 3v18"/><path d="M5 7l7-4 7 4"/>
@@ -804,7 +817,7 @@ footer {
           </div>
           <h3>Regulatory Expert</h3>
           <p>GDPR · DSA · CCPA</p>
-          <span class="pillar-expand-hint" style="position:relative;display:block;margin-top:0.5rem;font-size:0.75rem;color:var(--accent-2);opacity:0.5;">+</span>
+          <span class="pillar-expand-hint" style="position:relative;display:block;margin-top:0.5rem;font-size:0.8rem;color:var(--accent-2);opacity:0.75;font-weight:600;">Click to expand +</span>
         </div>
       </div>
 
@@ -945,8 +958,8 @@ footer {
     </div>
 
     <div style="position:relative">
-      <div class="tl-role-node" style="top:22px"></div>
-      <div class="tl-date-label" style="top:18px">2023 –</div>
+      <div class="tl-role-node" style="top:28px"></div>
+      <div class="tl-date-label" style="top:26px">2023 –</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Lead Product Manager, User Privacy</div>
@@ -965,8 +978,8 @@ footer {
     </div>
 
     <div style="position:relative">
-      <div class="tl-role-node" style="top:22px"></div>
-      <div class="tl-date-label" style="top:18px">2021</div>
+      <div class="tl-role-node" style="top:28px"></div>
+      <div class="tl-date-label" style="top:26px">2021</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Senior Product Manager, Ads User Privacy</div>
@@ -1034,8 +1047,8 @@ footer {
     </div>
 
     <div style="position:relative">
-      <div class="tl-role-node" style="top:22px"></div>
-      <div class="tl-date-label" style="top:18px">2019</div>
+      <div class="tl-role-node" style="top:28px"></div>
+      <div class="tl-date-label" style="top:26px">2019</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Product Manager, Display Ads Automation</div>
@@ -1052,8 +1065,8 @@ footer {
     </div>
 
     <div style="position:relative">
-      <div class="tl-role-node" style="top:22px"></div>
-      <div class="tl-date-label" style="top:18px">2016</div>
+      <div class="tl-role-node" style="top:28px"></div>
+      <div class="tl-date-label" style="top:26px">2016</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Product Marketing, Display Ads Targeting</div>
@@ -1068,8 +1081,8 @@ footer {
     </div>
 
     <div style="position:relative">
-      <div class="tl-role-node" style="top:22px"></div>
-      <div class="tl-date-label" style="top:18px">2014</div>
+      <div class="tl-role-node" style="top:28px"></div>
+      <div class="tl-date-label" style="top:26px">2014</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Product Marketing, Greater China &amp; South Korea</div>
@@ -1084,8 +1097,8 @@ footer {
     </div>
 
     <div style="position:relative">
-      <div class="tl-role-node" style="top:22px"></div>
-      <div class="tl-date-label" style="top:18px">2013</div>
+      <div class="tl-role-node" style="top:28px"></div>
+      <div class="tl-date-label" style="top:26px">2013</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Technical Solutions Consultant</div>
@@ -1101,8 +1114,8 @@ footer {
     </div>
 
     <div style="position:relative">
-      <div class="tl-role-node" style="top:22px"></div>
-      <div class="tl-date-label" style="top:18px">2011</div>
+      <div class="tl-role-node" style="top:28px"></div>
+      <div class="tl-date-label" style="top:26px">2011</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Account Manager, Ad Sales</div>
@@ -1140,8 +1153,8 @@ footer {
     </div>
 
     <div style="position:relative">
-      <div class="tl-role-node" style="top:22px"></div>
-      <div class="tl-date-label" style="top:18px">2009</div>
+      <div class="tl-role-node" style="top:28px"></div>
+      <div class="tl-date-label" style="top:26px">2009</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Project Manager (Contractor)</div>
@@ -1156,8 +1169,8 @@ footer {
     </div>
 
     <div style="position:relative">
-      <div class="tl-role-node" style="top:22px"></div>
-      <div class="tl-date-label" style="top:18px">2008</div>
+      <div class="tl-role-node" style="top:28px"></div>
+      <div class="tl-date-label" style="top:26px">2008</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Project Manager</div>
@@ -1442,6 +1455,7 @@ footer {
 <!-- Footer -->
 <footer>
   <div class="wrap">
+    <p style="font-size:1.1rem;color:var(--text-2);margin-bottom:1.5rem;font-weight:500;">Let's build something great together.</p>
     <div class="foot-links">
       <a href="mailto:jameshgj@gmail.com">Email</a>
       <a href="tel:+16502158321">Phone</a>
@@ -1563,6 +1577,7 @@ function closeModal() {
   document.getElementById('pillarModal').classList.remove('active');
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.querySelectorAll('.pillar[tabindex]').forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();p.click();} }));
 
 // ── Headline win expand/collapse ──
 function toggleHlWin(el) {
