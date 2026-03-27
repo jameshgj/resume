@@ -143,14 +143,21 @@
     margin-bottom: 5px;
   }
 
-  /* ===== BULLET ITEMS — indented paragraphs, no bullet markers ===== */
+  /* ===== BULLET ITEMS ===== */
   .bl { list-style: none; padding-left: 0; }
   .bl li {
     font-size: 8.5pt;
     line-height: 1.45;
     color: var(--body);
-    padding-left: 12px;
+    padding-left: 16px;
+    text-indent: -8px;
     margin-bottom: 4px;
+  }
+  .bl li::before {
+    content: '•';
+    color: var(--navy);
+    font-weight: 700;
+    margin-right: 4px;
   }
   .bl strong { color: var(--dark); font-weight: 700; }
 
@@ -161,17 +168,21 @@
     color: var(--mid);
     margin-bottom: 1px;
   }
-  .earl-list {
-    list-style: none;
-    padding-left: 0;
-    margin: 2px 0 4px;
-  }
-  .earl-list li {
+  .earl-inline {
     font-size: 8pt;
     line-height: 1.4;
     color: var(--mid);
-    padding-left: 12px;
-    margin-bottom: 1px;
+    margin: 4px 0 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .earl-inline .earl-item {
+    white-space: nowrap;
+  }
+  .earl-inline .earl-sep {
+    color: var(--rule);
+    margin: 0 10px;
   }
 
   /* ===== EDUCATION ===== */
@@ -342,11 +353,13 @@
     </ul>
   </div>
 
-  <ul class="earl-list">
-    <li>Contractor Project Manager (2009–2010)</li>
-    <li>ADC College Project Manager (2008–2009)</li>
-    <li>TES Global Sales Manager (2008)</li>
-  </ul>
+  <div class="earl-inline">
+    <span class="earl-item"><strong>Contractor Project Manager</strong> 2009–2010</span>
+    <span class="earl-sep">|</span>
+    <span class="earl-item"><strong>ADC College Project Manager</strong> 2008–2009</span>
+    <span class="earl-sep">|</span>
+    <span class="earl-item"><strong>TES Global Sales Manager</strong> 2008</span>
+  </div>
 
   <div class="sec">Education</div>
   <p class="edu"><strong>The University of Bath, UK</strong> — Master of Science: Advanced Management Practice</p>
