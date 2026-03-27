@@ -519,6 +519,29 @@ footer {
 .foot-copy { font-size:0.75rem; color:var(--text-3); }
 .foot-version { font-size:0.65rem; color:var(--text-3); opacity:0.5; margin-top:0.5rem; letter-spacing:0.5px; }
 
+/* ═══ RESUME PREVIEW ═══ */
+.resume-preview-section { background:var(--bg-2); }
+.resume-preview-frame {
+  width:100%; max-width:850px; margin:0 auto;
+  border:1px solid var(--border); border-radius:var(--r);
+  overflow:hidden; background:#fff;
+  box-shadow:0 8px 32px rgba(0,0,0,0.08);
+}
+.resume-preview-frame iframe {
+  width:100%; height:1100px; border:none; display:block;
+}
+.resume-save-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--accent); color:#fff; border:none;
+  padding:12px 28px; border-radius:100px; font:600 0.9rem var(--font);
+  cursor:pointer; transition:all 0.3s; text-decoration:none;
+  margin-top:1.5rem;
+}
+.resume-save-btn:hover { background:var(--accent-2); transform:translateY(-2px); box-shadow:0 8px 24px rgba(108,92,231,0.3); }
+@media(max-width:768px){
+  .resume-preview-frame iframe { height:700px; }
+}
+
 /* ═══ SCROLL ANIMATIONS ═══ */
 .reveal {
   opacity:0; transform:translateY(50px);
@@ -710,7 +733,8 @@ footer {
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#education">Education</a>
-    <a class="nav-download" href="James_Jones_Resume.pdf" download="James_Jones_Resume.pdf">Resume ↓</a>
+    <a href="#resume-preview">Resume</a>
+    <a class="nav-download" href="James_Jones_Resume.pdf" download="James_Jones_Resume.pdf">Save ↓</a>
   </div>
 </nav>
 
@@ -912,7 +936,7 @@ footer {
           </svg>
         </div>
         <div class="mb-period" id="tt-period"></div>
-        <div style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.5rem;line-height:1.6;">2 roles leading youth safety, privacy, and content moderation products protecting tens of millions of under-18 users globally.</div>
+        <div style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.5rem;line-height:1.6;">2 roles defining multi-year product roadmaps for youth safety, privacy, and content moderation — protecting tens of millions of under-18 users globally.</div>
         <div class="hl-wins hl-tiktok">
           <div class="hl-win" onclick="toggleHlWin(this)">
             <div class="hl-win-metric">Patent Pending — 85+ Stakeholders <span class="expand-icon">+</span></div>
@@ -922,12 +946,12 @@ footer {
           <div class="hl-win" onclick="toggleHlWin(this)">
             <div class="hl-win-metric">3× Approval · 50–80% Fraud Cut <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Kids Mode ML turnaround — transformed content pipeline</div>
-            <div class="hl-win-detail">Improved video approval rates from 17% to 55% via ML-based optimization. Reduced fraudulent registrations 50–80% through security improvements. Significant cost reduction. Created strategic blueprint for global expansion.</div>
+            <div class="hl-win-detail">Improved video approval rates from 17% to 55% via ML-based optimization. Reduced fraudulent registrations 50–80% through security improvements. Created multi-market expansion roadmap for global rollout, establishing the scalable playbook for future markets.</div>
           </div>
           <div class="hl-win" onclick="toggleHlWin(this)">
             <div class="hl-win-metric">First-of-Kind Regulation <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Australia under-16 social media ban — C-suite delivery ahead of deadline</div>
-            <div class="hl-win-detail">Led product strategy for Australia's first-of-its-kind national under-16 social media ban. Navigated legal workshops and presented solutions directly to C-suite, delivering compliance ahead of the regulatory deadline.</div>
+            <div class="hl-win-detail">Led product strategy for Australia's first-of-its-kind national under-16 social media ban. Navigated legal workshops and presented solutions directly to C-suite — establishing a reusable regulatory response framework and delivering compliance ahead of deadline.</div>
           </div>
           <div class="hl-win" onclick="toggleHlWin(this)">
             <div class="hl-win-metric">5M+ Creators · 17M+ Posts <span class="expand-icon">+</span></div>
@@ -948,11 +972,11 @@ footer {
         </div>
         <div class="role-where"><span class="flag-img fi-us"></span> San Jose, California</div>
         <ul class="role-list tt-dots">
-          <li><strong>Lead youth safety and content moderation strategy</strong> across three product areas (parental controls, kids-only mode, age-based feature access), improving outcomes for tens of millions of under-18 users globally.</li>
+          <li><strong>Defined and own the multi-year product roadmap for youth safety and content moderation</strong> across three product areas (parental controls, kids-only mode, age-based feature access), improving outcomes for tens of millions of under-18 users globally.</li>
           <li><strong>Delivered patent-pending parental blocking controls</strong> (application filed), coordinating 85+ people across Legal, Trust &amp; Safety, Engineering, UX, and Compliance.</li>
-          <li><strong>Delivered Australia's under-16 social media ban</strong> compliance, leading product strategy through legal workshops to present solutions to C-suite ahead of regulatory deadline.</li>
-          <li><strong>Transformed Kids Mode US content pipeline</strong>: improved video approval rates from 17% to 55% via ML-based optimization. Reduced fraudulent registrations 50–80% through security and content moderation improvements.</li>
-          <li><strong>Designed age transition system</strong> enabling tens of millions of teens to safely access broader platform features, driving +2.6% messaging adoption and +0.29% public account opt-ins.</li>
+          <li><strong>Delivered Australia's under-16 social media ban</strong> compliance, leading product strategy through legal workshops to present solutions to C-suite — establishing a reusable regulatory response framework ahead of deadline.</li>
+          <li><strong>Transformed Kids Mode US content pipeline</strong>: improved video approval rates from 17% to 55% via ML-based optimization. Reduced fraudulent registrations 50–80%. Created multi-market expansion roadmap, delivering Brazil launch readiness and the scalable playbook for future markets.</li>
+          <li><strong>Defined long-term platform strategy for age transition</strong>, designing a system enabling tens of millions of teens to safely access broader platform features, driving +2.6% messaging adoption and +0.29% public account opt-ins.</li>
           <li><strong>Hired and developed PM intern</strong> who exceeded goals, delivering 3 product specs through executive review; mentored mid-level PMs.</li>
         </ul>
       </div>
@@ -971,8 +995,8 @@ footer {
         <li><strong>Overhauled ad labeling system</strong>, improving ad viewability +0.9% while ensuring regulatory compliance; launched sponsored content disclosure tool used by 5M+ creators on 17M+ posts.</li>
         <li><strong>Discovered and fixed critical data export bug</strong> affecting most third-party integrations across tens of thousands of daily requests.</li>
         <li><strong>Built ML system to detect sensitive advertiser keywords</strong> (medical, financial), embedding privacy safeguards into global advertising pipelines.</li>
-        <li><strong>Designed unified privacy control system</strong> meeting GDPR, DSA, and CCPA requirements through a single interface — consolidating multiple regulatory obligations into simple user controls.</li>
-        <li><strong>Launched data portability system</strong> recognized as best-in-class by European regulators; processed 100+ external applications with zero escalations.</li>
+        <li><strong>Architected long-term privacy control strategy</strong>, designing a unified system meeting GDPR, DSA, and CCPA requirements through a single interface — consolidating multiple regulatory obligations and establishing the foundation for future regulatory scalability.</li>
+        <li><strong>Launched data portability system</strong> recognized as best-in-class by European regulators; processed 100+ external applications with zero escalations — setting the benchmark for TikTok's interoperability roadmap.</li>
       </ul>
       </div>
     </div><!-- /role wrapper -->
@@ -1350,6 +1374,23 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════ RESUME PREVIEW ═══════════ -->
+<section id="resume-preview" class="resume-preview-section">
+  <div class="wrap" style="text-align:center;">
+    <div class="reveal">
+      <div class="sh-label">Resume</div>
+      <h2 class="sh-title">Preview</h2>
+    </div>
+    <div class="resume-preview-frame reveal d1">
+      <iframe src="James_Jones_Resume.pdf" title="Resume Preview"></iframe>
+    </div>
+    <a class="resume-save-btn reveal d2" href="James_Jones_Resume.pdf" download="James_Jones_Resume.pdf">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Save to Local Drive
+    </a>
+  </div>
+</section>
+
 <!-- Modal overlay -->
 <div class="modal-overlay" id="pillarModal" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
@@ -1368,7 +1409,7 @@ footer {
       <a href="https://linkedin.com/in/jameshgjones" target="_blank">LinkedIn ↗</a>
     </div>
     <p class="foot-copy">&copy; 2026 James H.G. Jones</p>
-    <p class="foot-version">v10</p>
+    <p class="foot-version">v11</p>
   </div>
 </footer>
 
