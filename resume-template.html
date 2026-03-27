@@ -55,9 +55,9 @@
   /* ===== HEADER — clean, white bg ===== */
   .hdr {
     text-align: center;
-    padding-bottom: 6px;
+    padding-bottom: 7px;
     border-bottom: 1.5px solid var(--navy);
-    margin-bottom: 8px;
+    margin-bottom: 9px;
   }
   .hdr-name {
     color: var(--navy);
@@ -87,9 +87,9 @@
 
   /* ===== SUMMARY ===== */
   .sum {
-    margin: 8px 0 2px;
-    font-size: 8.5pt;
-    line-height: 1.45;
+    margin: 9px 0 3px;
+    font-size: 8.8pt;
+    line-height: 1.48;
     color: var(--body);
   }
   .sum strong { color: var(--dark); font-weight: 700; }
@@ -116,7 +116,7 @@
 
   /* ===== COMPANY BLOCK — clean, no bg ===== */
   .co {
-    margin: 0 0 6px;
+    margin: 0 0 7px;
     padding: 0;
     border-top: 1px solid #ddd;
     padding-top: 4px;
@@ -140,17 +140,17 @@
     font-size: 8.5pt;
     color: var(--mid);
     font-style: italic;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
   }
 
   /* ===== BULLET ITEMS — indented paragraphs, no bullet markers ===== */
   .bl { list-style: none; padding-left: 0; }
   .bl li {
     font-size: 8.5pt;
-    line-height: 1.4;
+    line-height: 1.42;
     color: var(--body);
     padding-left: 12px;
-    margin-bottom: 2px;
+    margin-bottom: 3.5px;
   }
   .bl strong { color: var(--dark); font-weight: 700; }
 
@@ -165,7 +165,7 @@
   /* ===== EDUCATION ===== */
   .edu {
     font-size: 8pt;
-    margin-bottom: 1px;
+    margin-bottom: 0px;
     line-height: 1.35;
     color: var(--body);
   }
@@ -182,7 +182,7 @@
   .sk-l {
     font-weight: 700;
     color: var(--dark);
-    width: 140px;
+    width: 160px;
     padding-right: 8px;
     font-size: 7.5pt;
     letter-spacing: .3px;
@@ -196,8 +196,9 @@
     .page {
       margin: 0;
       min-height: auto;
-      page-break-after: always;
     }
+    .co { page-break-inside: avoid; }
+    .skt { page-break-inside: avoid; }
     @page { size: letter; margin: 0; }
   }
 </style>
@@ -211,8 +212,7 @@
 
 <div id="resume">
 
-<!-- ======================== PAGE 1 ======================== -->
-<div class="page" id="p1">
+<div class="page">
 
   <div class="hdr">
     <div class="hdr-name">James H.G. Jones</div>
@@ -227,7 +227,7 @@
   </div>
 
   <div class="sum">
-    Product leader with <strong>a 15-year career spanning Google and TikTok</strong> — from ad sales and product marketing to <strong>7 years leading product management</strong> across advertising, privacy, safety, and compliance for <strong>tens of millions of users globally</strong>. Consistently delivers <strong>multi-million dollar revenue impact</strong> through ML/AI-powered user protection and advertising products. Hires, develops, and mentors PMs while driving cross-functional execution across Engineering, Legal, Policy, and Design. Known for <strong>turning regulatory requirements into globally valuable product innovations</strong> in highly challenging, compliance-intensive environments.
+    Product leader with <strong>a 15-year career spanning Google and TikTok</strong> — from ad sales and product marketing to <strong>7 years leading product management</strong> across advertising, privacy, safety, and compliance for <strong>tens of millions of users globally</strong>. Consistently delivers <strong>multi-million dollar revenue impact</strong> through ML/AI-powered user protection and advertising products. Hires, develops, and mentors PMs while driving cross-functional execution across Engineering, Legal, Policy, and Design. Known for <strong>turning regulatory requirements into product strategy</strong> — building scalable systems that satisfy compliance while driving user and business outcomes in highly challenging environments.
   </div>
 
   <div class="sec">Experience</div>
@@ -242,8 +242,8 @@
       <li><strong>Defined and own the multi-year product roadmap for youth safety and content moderation</strong> across <strong>three product areas</strong> (parental controls, kids-only mode, age-based feature access), improving outcomes for tens of millions of under-18 users globally and strengthening TikTok's long-term regulatory positioning.</li>
       <li><strong>Delivered patent-pending parental blocking controls</strong> (application filed), coordinating <strong>85+ people</strong> across Legal, Trust &amp; Safety, Engineering, UX, and Compliance to satisfy Irish Online Safety Commission requirements.</li>
       <li><strong>Delivered Australia's under-16 social media ban</strong> compliance, leading product strategy through legal workshops to present solutions to C-suite — <strong>establishing a reusable regulatory response framework</strong> and managing execution across all departments ahead of regulatory deadline.</li>
-      <li><strong>Transformed Kids Mode US content pipeline</strong>: tripled video approval rates via ML-based optimization while <strong>reducing cost-per-approved-video by 73%</strong>. Reduced fraudulent registrations <strong>50–80%</strong> through security and content moderation improvements. Created <strong>multi-market expansion roadmap</strong> for global rollout, delivering Brazil launch readiness <strong>and establishing the scalable playbook for future markets</strong>.</li>
-      <li><strong>Defined long-term platform strategy for age transition</strong>, designing a system enabling tens of millions of teens to safely access broader platform features, driving <strong>+2.6% messaging adoption</strong> and <strong>+0.29% public account opt-ins</strong>.</li>
+      <li><strong>Transformed Kids Mode US content pipeline</strong>: tripled video approval rates via ML-based optimization while <strong>significantly reducing cost-per-approved-video</strong>. Reduced fraudulent registrations <strong>50–80%</strong> through security and content moderation improvements. Created <strong>multi-market expansion roadmap</strong> for global rollout, delivering Brazil launch readiness <strong>and establishing the scalable playbook for future markets</strong>.</li>
+      <li><strong>Defined long-term platform strategy for age transition</strong>, designing a system enabling tens of millions of teens to safely access broader platform features, driving <strong>incremental messaging adoption</strong> and <strong>public account opt-ins</strong>.</li>
       <li><strong>Hired and developed PM intern</strong> who exceeded goals, delivering <strong>3 product specs</strong> through executive review; mentored mid-level PMs on execution and stakeholder management.</li>
     </ul>
   </div>
@@ -255,19 +255,14 @@
     </div>
     <div class="co-r">Senior Product Manager, Ads User Privacy — Mountain View, California</div>
     <ul class="bl">
-      <li><strong>Overhauled ad labeling system</strong>, improving ad viewability <strong>+0.9%</strong> while ensuring regulatory compliance; launched sponsored content disclosure tool used by <strong>5M+ creators</strong> on <strong>17M+ posts</strong>.</li>
-      <li><strong>Discovered and fixed critical data export bug</strong> affecting most third-party integrations across tens of thousands of daily requests, preventing significant regulatory exposure.</li>
-      <li><strong>Prototyped ML system to detect sensitive advertiser keywords</strong> (medical, financial), embedding privacy safeguards into global advertising pipelines.</li>
-      <li><strong>Architected long-term privacy control strategy</strong>, designing a unified system meeting <strong>GDPR, DSA, and CCPA</strong> requirements through a single interface — consolidating multiple regulatory obligations into simple user controls <strong>and establishing the foundation for future regulatory scalability</strong>.</li>
       <li><strong>Launched data portability system</strong> recognized as <strong>best-in-class by European regulators</strong>; processed <strong>100+ external applications</strong> with zero escalations, striking a balance between scalability and accuracy.</li>
+      <li><strong>Architected long-term privacy control strategy</strong>, designing a unified system meeting <strong>GDPR, DSA, and CCPA</strong> requirements through a single interface — consolidating multiple regulatory obligations into simple user controls <strong>and establishing the foundation for future regulatory scalability</strong>.</li>
+      <li><strong>Discovered and fixed critical data export bug</strong> affecting most third-party integrations across tens of thousands of daily requests, preventing significant regulatory exposure.</li>
+      <li><strong>Overhauled ad labeling system</strong>, improving label viewability while ensuring regulatory compliance; launched sponsored content disclosure tool used by <strong>5M+ creators</strong> on <strong>17M+ posts</strong>.</li>
       <li><strong>Led California non-personalized feeds compliance project</strong> (code-complete), adapting EU regulatory framework to proposed state law; coordinated cross-departmental effort across product, legal, and policy teams.</li>
+      <li><strong>Prototyped ML system to detect sensitive advertiser keywords</strong> (medical, financial), embedding privacy safeguards into global advertising pipelines.</li>
     </ul>
   </div>
-
-</div>
-
-<!-- ======================== PAGE 2 ======================== -->
-<div class="page" id="p2">
 
   <div class="co">
     <div class="co-top">
@@ -311,7 +306,7 @@
 
   <div class="sec">Earlier Google &amp; Career</div>
 
-  <div class="co" style="border-top:none; padding-top:0; margin-bottom:6px;">
+  <div class="co" style="border-top:none; padding-top:0; margin-bottom:5px;">
     <div class="co-top">
       <span class="co-n">Google</span>
       <span class="co-d">01/2013 – 07/2014</span>
@@ -324,7 +319,7 @@
     </ul>
   </div>
 
-  <div class="co" style="border-top:none; padding-top:0; margin-bottom:6px;">
+  <div class="co" style="border-top:none; padding-top:0; margin-bottom:5px;">
     <div class="co-top">
       <span class="co-n">Google</span>
       <span class="co-d">01/2011 – 12/2012</span>
