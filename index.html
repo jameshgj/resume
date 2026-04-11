@@ -30,7 +30,7 @@
   --accent: #6c5ce7;
   --accent-2: #7c6aef;
   --accent-glow: rgba(108,92,231,0.10);
-  --tiktok-c: #00b8b0;
+  --tiktok-c: #FE2C55;
   --tiktok-p: #e0234e;
   --g-blue: #4285f4;
   --g-red: #ea4335;
@@ -107,14 +107,24 @@ nav.scrolled { background:rgba(255,255,255,0.95); box-shadow:0 4px 24px rgba(0,0
 }
 .nav-pill a:hover { color:var(--text); background:rgba(108,92,231,0.08); }
 .nav-pill a.active { color:#fff; background:var(--accent); box-shadow: 0 2px 12px rgba(108,92,231,0.3); }
-.nav-pill a.active[href="#experience"] { background:var(--tiktok-c); box-shadow:0 2px 12px rgba(0,184,176,0.3); }
-.nav-pill a.active[href="#skills"] { background:var(--g-blue); box-shadow:0 2px 12px rgba(66,133,244,0.3); }
-.nav-pill a.active[href="#education"] { background:#34a853; box-shadow:0 2px 12px rgba(52,168,83,0.3); }
+.nav-pill a.active.nav-tt { background:var(--tiktok-c); box-shadow:0 2px 12px rgba(254,44,85,0.3); }
+.nav-pill a.active.nav-gg { background:var(--g-blue); box-shadow:0 2px 12px rgba(66,133,244,0.3); }
+.nav-pill a.active.nav-ec { background:var(--text-3); box-shadow:0 2px 12px rgba(106,106,136,0.3); }
 .nav-pill a.nav-download {
   background: rgba(108,92,231,0.1); color:var(--accent);
   border:1px solid rgba(108,92,231,0.25);
 }
 .nav-pill a.nav-download:hover { background:var(--accent); color:#fff; }
+
+/* Company sub-links in main nav */
+.nav-co {
+  display:none !important; align-items:center; gap:5px;
+  font-size:0.72rem !important; padding:6px 14px !important;
+  letter-spacing:0.3px;
+}
+.nav-co.nav-co-show { display:inline-flex !important; }
+.nav-co.active.nav-tt { background:var(--tiktok-c) !important; box-shadow:0 2px 12px rgba(254,44,85,0.3); }
+.nav-co.active.nav-gg { background:var(--g-blue) !important; box-shadow:0 2px 12px rgba(66,133,244,0.3); }
 
 /* ═══ LAYOUT ═══ */
 .wrap { position:relative; z-index:1; max-width:1120px; margin:0 auto; padding:0 2rem; }
@@ -184,8 +194,8 @@ section { padding:5rem 0; position:relative; }
   width:18px; height:18px; border-radius:50%;
   border:1px solid rgba(108,92,231,0.2);
   display:flex; align-items:center; justify-content:center;
-  font-size:12px; color:var(--accent-2); margin:0.5rem auto 0;
-  position:relative;
+  font-size:12px; color:var(--accent-2);
+  position:absolute; top:12px; right:12px;
 }
 .pillar:hover .pillar-expand { border-color:rgba(108,92,231,0.4); color:var(--accent); }
 
@@ -289,7 +299,7 @@ section { padding:5rem 0; position:relative; }
   content:''; position:absolute; inset:0; border-radius:var(--r);
 }
 .mb-tiktok::before {
-  background: linear-gradient(135deg, rgba(0,184,176,0.05) 0%, rgba(224,35,78,0.05) 100%);
+  background: linear-gradient(135deg, rgba(254,44,85,0.05) 0%, rgba(224,35,78,0.05) 100%);
 }
 .mb-google::before {
   background: linear-gradient(135deg, rgba(66,133,244,0.04) 0%, rgba(52,168,83,0.04) 50%, rgba(245,166,35,0.04) 100%);
@@ -342,7 +352,7 @@ section { padding:5rem 0; position:relative; }
   background:rgba(108,92,231,0.08); border:1px solid rgba(108,92,231,0.15);
   white-space:nowrap;
 }
-.tl-tt .role-when { color:var(--tiktok-c); background:rgba(0,184,176,0.08); border-color:rgba(0,184,176,0.2); }
+.tl-tt .role-when { color:var(--tiktok-c); background:rgba(254,44,85,0.08); border-color:rgba(254,44,85,0.2); }
 .tl-gg .role-when { color:var(--g-blue); background:rgba(66,133,244,0.08); border-color:rgba(66,133,244,0.2); }
 .tl-ec .role-when { color:var(--text-3); background:rgba(106,106,136,0.08); border-color:rgba(106,106,136,0.2); }
 .role-where {
@@ -360,8 +370,8 @@ section { padding:5rem 0; position:relative; }
   content:''; position:absolute; left:0; top:11px;
   width:8px; height:8px; border-radius:50%;
 }
-.tt-dots li::before { background:linear-gradient(135deg, var(--tiktok-c), var(--tiktok-p)); }
-.gg-dots li::before { background:linear-gradient(135deg, var(--g-blue), var(--g-green)); }
+.tt-dots li::before { background:var(--tiktok-c); }
+.gg-dots li::before { background:var(--g-blue); }
 .ec-dots li::before { background:linear-gradient(135deg, var(--text-3), #8a8aaa); }
 .role-list strong { color:var(--text); font-weight:600; }
 
@@ -520,6 +530,12 @@ section { padding:5rem 0; position:relative; }
   transition:all 0.2s;
 }
 .modal-close:hover { background:var(--accent-2); transform:translateY(-1px); }
+.modal-overlay.modal-tt .modal-close { background:var(--tiktok-c); }
+.modal-overlay.modal-tt .modal-close:hover { background:#d41e45; }
+.modal-overlay.modal-tt .modal-title { color:var(--tiktok-c); }
+.modal-overlay.modal-gg .modal-close { background:var(--g-blue); }
+.modal-overlay.modal-gg .modal-close:hover { background:#3b78dc; }
+.modal-overlay.modal-gg .modal-title { color:var(--g-blue); }
 
 /* ═══ FOOTER ═══ */
 footer {
@@ -609,7 +625,7 @@ footer {
   content:''; position:absolute; left:20px; top:0; bottom:0; width:3px;
   border-radius:3px;
 }
-.tl-section.tl-tt::before { background:linear-gradient(180deg, var(--tiktok-c), rgba(37,244,238,0.15)); }
+.tl-section.tl-tt::before { background:linear-gradient(180deg, var(--tiktok-c), rgba(254,44,85,0.15)); }
 .tl-section.tl-gg::before { background:linear-gradient(180deg, var(--g-blue), rgba(66,133,244,0.15)); }
 .tl-section.tl-ec::before { background:linear-gradient(180deg, var(--text-3), rgba(106,106,136,0.1)); }
 /* Animated fill overlay */
@@ -617,7 +633,7 @@ footer {
   position:absolute; left:20px; top:0; width:3px; height:0;
   border-radius:3px; z-index:1; transition:height 0.15s linear;
 }
-.tl-section.tl-tt .tl-fill { background:var(--tiktok-c); box-shadow:0 0 10px rgba(37,244,238,0.5); }
+.tl-section.tl-tt .tl-fill { background:var(--tiktok-c); box-shadow:0 0 10px rgba(254,44,85,0.5); }
 .tl-section.tl-gg .tl-fill { background:var(--g-blue); box-shadow:0 0 10px rgba(66,133,244,0.5); }
 .tl-section.tl-ec .tl-fill { background:var(--text-3); box-shadow:0 0 6px rgba(106,106,136,0.3); }
 
@@ -629,8 +645,8 @@ footer {
   transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
 }
 .tl-company-node.tl-cn-tt {
-  background:rgba(37,244,238,0.15); border:3px solid var(--tiktok-c);
-  box-shadow:0 0 20px rgba(37,244,238,0.2);
+  background:rgba(254,44,85,0.15); border:3px solid var(--tiktok-c);
+  box-shadow:0 0 20px rgba(254,44,85,0.2);
 }
 .tl-company-node.tl-cn-gg {
   background:rgba(66,133,244,0.15); border:3px solid var(--g-blue);
@@ -641,7 +657,7 @@ footer {
   box-shadow:0 0 12px rgba(106,106,136,0.15);
 }
 .tl-company-node.active { transform:scale(1.15); }
-.tl-company-node.tl-cn-tt.active { background:var(--tiktok-c); box-shadow:0 0 28px rgba(37,244,238,0.5); }
+.tl-company-node.tl-cn-tt.active { background:var(--tiktok-c); box-shadow:0 0 28px rgba(254,44,85,0.5); }
 .tl-company-node.tl-cn-gg.active { background:var(--g-blue); box-shadow:0 0 28px rgba(66,133,244,0.5); }
 .tl-company-node.tl-cn-ec.active { background:var(--text-3); box-shadow:0 0 16px rgba(106,106,136,0.4); }
 .tl-company-node svg { width:14px; height:14px; }
@@ -654,7 +670,7 @@ footer {
 .tl-gg .tl-role-node { border:2px solid var(--g-blue); }
 .tl-ec .tl-role-node { border:2px solid var(--text-3); }
 .tl-role-node.active { background:currentColor; }
-.tl-tt .tl-role-node.active { background:var(--tiktok-c); box-shadow:0 0 8px rgba(37,244,238,0.4); }
+.tl-tt .tl-role-node.active { background:var(--tiktok-c); box-shadow:0 0 8px rgba(254,44,85,0.4); }
 .tl-gg .tl-role-node.active { background:var(--g-blue); box-shadow:0 0 8px rgba(66,133,244,0.4); }
 .tl-ec .tl-role-node.active { background:var(--text-3); }
 
@@ -754,6 +770,14 @@ footer {
     <a href="#hero">Home</a>
     <a href="#impact">Impact</a>
     <a href="#experience">Experience</a>
+    <a href="#tiktok-section" class="nav-co" data-co="tt">
+      <svg viewBox="0 0 48 56" fill="none" width="11" height="13"><path d="M34.9 2.2h-7.3v29.5c0 3.2-2.6 5.8-5.8 5.8-3.2 0-5.8-2.6-5.8-5.8s2.6-5.8 5.8-5.8c.6 0 1.2.1 1.8.3v-7.7c-.6-.1-1.2-.1-1.8-.1-7.5 0-13.5 6-13.5 13.5s6 13.5 13.5 13.5 13.5-6 13.5-13.5V16.3c2.8 2 6.2 3.2 9.8 3.2v-7.7c-5-.3-9.2-4.2-10.2-9.6z" fill="currentColor"/></svg>
+      TikTok
+    </a>
+    <a href="#google-section" class="nav-co" data-co="gg">
+      <svg viewBox="0 0 24 24" fill="none" width="12" height="12"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="currentColor"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="currentColor"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53l-3.66 2.84C3.99 20.53 7.7 23 12 23z" fill="currentColor"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09L2.18 7.07C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="currentColor"/></svg>
+      Google
+    </a>
     <a href="#skills">Skills</a>
     <a href="#education">Education</a>
     <a href="#resume-preview">Resume</a>
@@ -960,19 +984,19 @@ footer {
         <div class="mb-period" id="tt-period"></div>
         <div style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.5rem;line-height:1.6;">2 roles defining multi-year product roadmaps for youth safety, privacy, and content moderation — protecting tens of millions of under-18 users globally.</div>
         <div class="hl-wins hl-tiktok">
-          <div class="hl-win" onclick="openModal('Patent Pending — 85+ Stakeholders','Coordinated 85+ stakeholders across Legal, Trust &amp; Safety, Engineering, UX, and Compliance to deliver patent-pending blocking controls for Irish Online Safety Commission compliance. First product of its kind at TikTok — patent application filed.')">
+          <div class="hl-win" onclick="openModal('Patent Pending — 85+ Stakeholders','Coordinated 85+ stakeholders across Legal, Trust &amp; Safety, Engineering, UX, and Compliance to deliver patent-pending blocking controls for Irish Online Safety Commission compliance. First product of its kind at TikTok — patent application filed.','tt')">
             <div class="hl-win-metric">Patent Pending — 85+ Stakeholders <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Parental Blocking Controls — first of its kind at TikTok</div>
           </div>
-          <div class="hl-win" onclick="openModal('3× Approval · 50–80% Fraud Cut','Tripled video approval rates via ML-based optimization while reducing cost-per-approved-video by 73%. Reduced fraudulent registrations 50–80% through security and content moderation improvements. Created multi-market expansion roadmap for global rollout, establishing the scalable playbook for future markets.')">
+          <div class="hl-win" onclick="openModal('3× Approval · 50–80% Fraud Cut','Tripled video approval rates via ML-based optimization while reducing cost-per-approved-video by 73%. Reduced fraudulent registrations 50–80% through security and content moderation improvements. Created multi-market expansion roadmap for global rollout, establishing the scalable playbook for future markets.','tt')">
             <div class="hl-win-metric">3× Approval · 50–80% Fraud Cut <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Kids Mode ML turnaround — transformed content pipeline</div>
           </div>
-          <div class="hl-win" onclick="openModal('First-of-Kind Regulation','Led product strategy for Australia\'s first-of-its-kind national under-16 social media ban. Navigated legal workshops and presented solutions directly to C-suite — establishing a reusable regulatory response framework and delivering compliance ahead of deadline.')">
+          <div class="hl-win" onclick="openModal('First-of-Kind Regulation','Led product strategy for Australia\'s first-of-its-kind national under-16 social media ban. Navigated legal workshops and presented solutions directly to C-suite — establishing a reusable regulatory response framework and delivering compliance ahead of deadline.','tt')">
             <div class="hl-win-metric">First-of-Kind Regulation <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Australia under-16 social media ban — C-suite delivery ahead of deadline</div>
           </div>
-          <div class="hl-win" onclick="openModal('5M+ Creators · 17M+ Posts','Launched sponsored content disclosure tool adopted by 5M+ creators across 17M+ posts. Improved label viewability while ensuring full regulatory compliance. Prototyped ML system to detect sensitive advertiser keywords.')">
+          <div class="hl-win" onclick="openModal('5M+ Creators · 17M+ Posts','Launched sponsored content disclosure tool adopted by 5M+ creators across 17M+ posts. Improved label viewability while ensuring full regulatory compliance. Prototyped ML system to detect sensitive advertiser keywords.','tt')">
             <div class="hl-win-metric">5M+ Creators · 17M+ Posts <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Sponsored content disclosure tool — regulatory compliance at scale</div>
           </div>
@@ -1046,19 +1070,19 @@ footer {
         <div class="mb-period" id="gg-period"></div>
         <div style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.5rem;line-height:1.6;">5 roles across 3 countries (US, UK, China) over 10 years. Built $135M revenue product, led Greater China market strategy, and pioneered privacy-preserving ad infrastructure.</div>
         <div class="hl-wins hl-google">
-          <div class="hl-win" onclick="openModal('$135M Annual Revenue','Self-initiated and built ML-powered customer acquisition product from scratch. Quadrupled results through integration with Google\'s flagship shopping product. Public launch at Google Marketing Live, scaling to $135M annual revenue.')">
+          <div class="hl-win" onclick="openModal('$135M Annual Revenue','Self-initiated and built ML-powered customer acquisition product from scratch. Quadrupled results through integration with Google\'s flagship shopping product. Public launch at Google Marketing Live, scaling to $135M annual revenue.','gg')">
             <div class="hl-win-metric">$135M Annual Revenue <span class="expand-icon">+</span></div>
             <div class="hl-win-label">ML-powered prospecting product — self-initiated, zero to scale</div>
           </div>
-          <div class="hl-win" onclick="openModal('$230M Projected Revenue','Delivered automated product feed tool from zero to beta, projected to unlock an estimated $230M annual revenue by enabling small businesses to run dynamic ads without manual feed management.')">
+          <div class="hl-win" onclick="openModal('$230M Projected Revenue','Delivered automated product feed tool from zero to beta, projected to unlock an estimated $230M annual revenue by enabling small businesses to run dynamic ads without manual feed management.','gg')">
             <div class="hl-win-metric">$230M Projected Revenue <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Automated product feed tool — zero to beta for small businesses</div>
           </div>
-          <div class="hl-win" onclick="openModal('95% Audience Coverage','Launched automated user tracking system that increased audience coverage from 8% to 95%, significantly expanding display ad reach for shopping advertisers.')">
+          <div class="hl-win" onclick="openModal('95% Audience Coverage','Launched automated user tracking system that increased audience coverage from 8% to 95%, significantly expanding display ad reach for shopping advertisers.','gg')">
             <div class="hl-win-metric">95% Audience Coverage <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Automated tracking system — ~12x audience coverage</div>
           </div>
-          <div class="hl-win" onclick="openModal('China Market Leader in 6 Months','Achieved regional market leadership within six months in Greater China. 2x revenue growth through optimized remarketing strategies and policy negotiations.')">
+          <div class="hl-win" onclick="openModal('China Market Leader in 6 Months','Achieved regional market leadership within six months in Greater China. 2x revenue growth through optimized remarketing strategies and policy negotiations.','gg')">
             <div class="hl-win-metric">China Market Leader in 6 Months <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Regional leadership — doubled AliExpress revenue to $8M annualized</div>
           </div>
@@ -1371,7 +1395,7 @@ footer {
       <a href="https://linkedin.com/in/jameshgjones" target="_blank">LinkedIn ↗</a>
     </div>
     <p class="foot-copy">&copy; 2026 James H.G. Jones</p>
-    <p class="foot-version">v1.14</p>
+    <p class="foot-version">v1.15</p>
   </div>
 </footer>
 
@@ -1431,18 +1455,50 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ── Active nav link tracking ──
+// ── Active nav link tracking with dynamic colors ──
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-pill a[href^="#"]');
+const expLink = document.querySelector('.nav-pill a[href="#experience"]');
+const ttSection = document.getElementById('tiktok-section');
+const ggSection = document.getElementById('google-section');
+const ecSection = document.getElementById('earlier-section');
+const navCoLinks = document.querySelectorAll('.nav-co');
+
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(s => {
     if (window.scrollY >= s.offsetTop - 200) current = s.id;
   });
   navLinks.forEach(a => {
+    if (a.classList.contains('nav-co')) return;
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
-});
+
+  var inExp = current === 'experience';
+  var co = inExp ? getActiveCompany() : null;
+
+  // Dynamic color on Experience nav pill
+  if (expLink) {
+    expLink.classList.remove('nav-tt','nav-gg','nav-ec');
+    if (co) expLink.classList.add('nav-' + co);
+  }
+
+  // Show/hide & highlight company sub-links in nav
+  navCoLinks.forEach(a => {
+    a.classList.toggle('nav-co-show', inExp);
+    a.classList.remove('active','nav-tt','nav-gg');
+    if (inExp && co && a.dataset.co === co) {
+      a.classList.add('active', 'nav-' + co);
+    }
+  });
+}, { passive: true });
+
+function getActiveCompany() {
+  var threshold = 300;
+  if (ecSection && ecSection.getBoundingClientRect().top < threshold) return 'ec';
+  if (ggSection && ggSection.getBoundingClientRect().top < threshold) return 'gg';
+  return 'tt';
+}
 
 // ── Parallax on mega-banners ──
 window.addEventListener('scroll', () => {
@@ -1478,10 +1534,13 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.b-metric').forEach(el => counterObserver.observe(el));
 
 // ── Modal for pillar cards ──
-function openModal(title, text) {
+function openModal(title, text, theme) {
+  var modal = document.getElementById('pillarModal');
+  modal.classList.remove('modal-tt','modal-gg');
+  if (theme) modal.classList.add('modal-' + theme);
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalText').textContent = text;
-  document.getElementById('pillarModal').classList.add('active');
+  modal.classList.add('active');
 }
 function closeModal() {
   document.getElementById('pillarModal').classList.remove('active');
