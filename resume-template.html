@@ -28,13 +28,15 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ===== TOOLBAR (hidden in PDF) ===== */
+  /* ===== TOOLBAR (hidden in PDF and iframes) ===== */
   .toolbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 999;
     background: #222; padding: 10px 24px;
     display: flex; align-items: center; gap: 14px;
     font-family: var(--font);
   }
+  .in-iframe .toolbar { display: none !important; }
+  .in-iframe .page { margin-top: 0; }
   .toolbar button {
     background: var(--navy); color: #fff; border: none;
     padding: 8px 22px; border-radius: 4px; font: 600 13px var(--font);
@@ -231,6 +233,7 @@
 </style>
 </head>
 <body>
+<script>if(window.self!==window.top)document.body.classList.add('in-iframe');</script>
 
 <div class="toolbar">
   <button onclick="window.print()">Save as PDF</button>
