@@ -440,7 +440,7 @@ section { padding:5rem 0; position:relative; }
 .edu-card:hover { border-color:rgba(108,92,231,0.25); transform:translateY(-3px); box-shadow:0 16px 48px rgba(0,0,0,0.06); }
 
 .edu-banner {
-  position:relative; padding:2rem 2.25rem 1.75rem;
+  position:relative; padding:1rem 1.5rem 1rem;
   overflow:hidden;
 }
 .edu-banner::before {
@@ -640,9 +640,7 @@ footer {
 
 /* Small role nodes */
 .tl-role-node {
-  position:absolute; left:16px; width:12px; height:12px;
-  border-radius:50%; z-index:2; background:var(--bg);
-  transition:all 0.3s;
+  display:none;
 }
 .tl-tt .tl-role-node { border:2px solid var(--tiktok-c); }
 .tl-gg .tl-role-node { border:2px solid var(--g-blue); }
@@ -654,10 +652,19 @@ footer {
 
 /* Date labels on the timeline */
 .tl-date-label {
-  position:absolute; left:-8px; transform:translateX(-100%);
+  position:absolute; left:-28px; transform:translateX(-100%);
   font-family:var(--font-m); font-size:0.75rem; color:var(--text-2);
   white-space:nowrap; font-weight:600; letter-spacing:0.5px;
+  display:flex; align-items:center; gap:8px;
 }
+.tl-date-label::after {
+  content:''; display:inline-block; width:12px; height:12px;
+  border-radius:50%; background:var(--text-3);
+  flex-shrink:0;
+}
+.tl-tt .tl-date-label::after { background:var(--tiktok-c); }
+.tl-gg .tl-date-label::after { background:var(--g-blue); }
+.tl-ec .tl-date-label::after { background:var(--text-3); }
 
 /* Break gap between company sections */
 .tl-break {
@@ -945,25 +952,21 @@ footer {
         <div class="mb-period" id="tt-period"></div>
         <div style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.5rem;line-height:1.6;">2 roles defining multi-year product roadmaps for youth safety, privacy, and content moderation — protecting tens of millions of under-18 users globally.</div>
         <div class="hl-wins hl-tiktok">
-          <div class="hl-win" onclick="toggleHlWin(this)">
+          <div class="hl-win" onclick="openModal('Patent Pending — 85+ Stakeholders','Coordinated 85+ stakeholders across Legal, Trust &amp; Safety, Engineering, UX, and Compliance to deliver patent-pending blocking controls for Irish Online Safety Commission compliance. First product of its kind at TikTok — patent application filed.')">
             <div class="hl-win-metric">Patent Pending — 85+ Stakeholders <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Parental Blocking Controls — first of its kind at TikTok</div>
-            <div class="hl-win-detail">Coordinated 85+ stakeholders across Legal, Trust &amp; Safety, Engineering, UX, and Compliance to deliver patent-pending blocking controls for Irish Online Safety Commission compliance. First product of its kind at TikTok — patent application filed.</div>
           </div>
-          <div class="hl-win" onclick="toggleHlWin(this)">
+          <div class="hl-win" onclick="openModal('3× Approval · 50–80% Fraud Cut','Tripled video approval rates via ML-based optimization while reducing cost-per-approved-video by 73%. Reduced fraudulent registrations 50–80% through security and content moderation improvements. Created multi-market expansion roadmap for global rollout, establishing the scalable playbook for future markets.')">
             <div class="hl-win-metric">3× Approval · 50–80% Fraud Cut <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Kids Mode ML turnaround — transformed content pipeline</div>
-            <div class="hl-win-detail">Tripled video approval rates via ML-based optimization while reducing cost-per-approved-video by 73%. Reduced fraudulent registrations 50–80% through security and content moderation improvements. Created multi-market expansion roadmap for global rollout, establishing the scalable playbook for future markets.</div>
           </div>
-          <div class="hl-win" onclick="toggleHlWin(this)">
+          <div class="hl-win" onclick="openModal('First-of-Kind Regulation','Led product strategy for Australia\'s first-of-its-kind national under-16 social media ban. Navigated legal workshops and presented solutions directly to C-suite — establishing a reusable regulatory response framework and delivering compliance ahead of deadline.')">
             <div class="hl-win-metric">First-of-Kind Regulation <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Australia under-16 social media ban — C-suite delivery ahead of deadline</div>
-            <div class="hl-win-detail">Led product strategy for Australia's first-of-its-kind national under-16 social media ban. Navigated legal workshops and presented solutions directly to C-suite — establishing a reusable regulatory response framework and delivering compliance ahead of deadline.</div>
           </div>
-          <div class="hl-win" onclick="toggleHlWin(this)">
+          <div class="hl-win" onclick="openModal('5M+ Creators · 17M+ Posts','Launched sponsored content disclosure tool adopted by 5M+ creators across 17M+ posts. Improved label viewability while ensuring full regulatory compliance. Prototyped ML system to detect sensitive advertiser keywords.')">
             <div class="hl-win-metric">5M+ Creators · 17M+ Posts <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Sponsored content disclosure tool — regulatory compliance at scale</div>
-            <div class="hl-win-detail">Launched sponsored content disclosure tool adopted by 5M+ creators across 17M+ posts. Improved label viewability while ensuring full regulatory compliance. Prototyped ML system to detect sensitive advertiser keywords.</div>
           </div>
         </div>
       </div>
@@ -971,7 +974,7 @@ footer {
 
     <div style="position:relative">
       <div class="tl-role-node" style="top:28px"></div>
-      <div class="tl-date-label" style="top:26px">2023 –</div>
+      <div class="tl-date-label" style="top:26px">2023</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Lead Product Manager, User Privacy</div>
@@ -1035,25 +1038,21 @@ footer {
         <div class="mb-period" id="gg-period"></div>
         <div style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.5rem;line-height:1.6;">5 roles across 3 countries (US, UK, China) over 10 years. Built $135M revenue product, led Greater China market strategy, and pioneered privacy-preserving ad infrastructure.</div>
         <div class="hl-wins hl-google">
-          <div class="hl-win" onclick="toggleHlWin(this)">
+          <div class="hl-win" onclick="openModal('$135M Annual Revenue','Self-initiated and built ML-powered customer acquisition product from scratch. Quadrupled results through integration with Google\'s flagship shopping product. Public launch at Google Marketing Live, scaling to $135M annual revenue.')">
             <div class="hl-win-metric">$135M Annual Revenue <span class="expand-icon">+</span></div>
             <div class="hl-win-label">ML-powered prospecting product — self-initiated, zero to scale</div>
-            <div class="hl-win-detail">Self-initiated and built ML-powered customer acquisition product from scratch. Quadrupled results through integration with Google's flagship shopping product. Public launch at Google Marketing Live, scaling to $135M annual revenue.</div>
           </div>
-          <div class="hl-win" onclick="toggleHlWin(this)">
+          <div class="hl-win" onclick="openModal('$230M Projected Revenue','Delivered automated product feed tool from zero to beta, projected to unlock an estimated $230M annual revenue by enabling small businesses to run dynamic ads without manual feed management.')">
             <div class="hl-win-metric">$230M Projected Revenue <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Automated product feed tool — zero to beta for small businesses</div>
-            <div class="hl-win-detail">Delivered automated product feed tool from zero to beta, projected to unlock an estimated $230M annual revenue by enabling small businesses to run dynamic ads without manual feed management.</div>
           </div>
-          <div class="hl-win" onclick="toggleHlWin(this)">
+          <div class="hl-win" onclick="openModal('95% Audience Coverage','Launched automated user tracking system that increased audience coverage from 8% to 95%, significantly expanding display ad reach for shopping advertisers.')">
             <div class="hl-win-metric">95% Audience Coverage <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Automated tracking system — ~12x audience coverage</div>
-            <div class="hl-win-detail">Launched automated user tracking system that increased audience coverage from 8% to 95%, significantly expanding display ad reach for shopping advertisers.</div>
           </div>
-          <div class="hl-win" onclick="toggleHlWin(this)">
+          <div class="hl-win" onclick="openModal('China Market Leader in 6 Months','Achieved regional market leadership within six months in Greater China. 2x revenue growth through optimized remarketing strategies and policy negotiations.')">
             <div class="hl-win-metric">China Market Leader in 6 Months <span class="expand-icon">+</span></div>
             <div class="hl-win-label">Regional leadership — doubled AliExpress revenue to $8M annualized</div>
-            <div class="hl-win-detail">Achieved regional market leadership within six months in Greater China. 2x revenue growth through optimized remarketing strategies and policy negotiations.</div>
           </div>
         </div>
       </div>
@@ -1303,36 +1302,7 @@ footer {
       <div class="edu-card reveal d1" data-uni="bath">
         <div class="edu-banner">
           <div class="edu-mono">Bath</div>
-          <svg class="edu-shield" width="72" height="84" viewBox="0 0 72 84" fill="none" style="position:relative;z-index:1;margin-bottom:0.75rem;">
-            <path d="M4 4 h64 v40 c0 22 -14 34 -32 38 c-18-4 -32-16 -32-38 V4z" fill="rgba(30,64,175,0.25)" stroke="#3b82f6" stroke-width="1.5"/>
-            <path d="M10 10 h52 v34 c0 18 -11 28 -26 32 c-15-4 -26-14 -26-32 V10z" fill="rgba(30,64,175,0.12)" stroke="#3b82f6" stroke-width="0.8" opacity="0.6"/>
-            <line x1="36" y1="16" x2="36" y2="62" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-            <line x1="29" y1="26" x2="43" y2="26" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-            <path d="M34 16 L36 10 L38 16" fill="#94a3b8" stroke="none"/>
-            <circle cx="36" cy="20" r="2.5" fill="none" stroke="#fbbf24" stroke-width="1"/>
-            <path d="M33.5 20 Q30 14 28 16" stroke="#fbbf24" stroke-width="0.8" fill="none"/>
-            <path d="M38.5 20 Q42 14 44 16" stroke="#fbbf24" stroke-width="0.8" fill="none"/>
-            <circle cx="28" cy="16" r="1.5" fill="#fbbf24"/>
-            <circle cx="44" cy="16" r="1.5" fill="#fbbf24"/>
-            <circle cx="22" cy="40" r="6" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="0.8"/>
-            <circle cx="22" cy="39" r="1" fill="#fbbf24"/><circle cx="24" cy="39" r="1" fill="#fbbf24"/>
-            <path d="M20 41.5 Q22 43 24 41.5" stroke="#fbbf24" stroke-width="0.6" fill="none"/>
-            <line x1="16" y1="40" x2="13" y2="40" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="28" y1="40" x2="31" y2="40" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="18" y1="35" x2="16" y2="33" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="26" y1="35" x2="28" y2="33" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="18" y1="45" x2="16" y2="47" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="26" y1="45" x2="28" y2="47" stroke="#fbbf24" stroke-width="0.6"/>
-            <circle cx="50" cy="40" r="6" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="0.8"/>
-            <circle cx="48" cy="39" r="1" fill="#fbbf24"/><circle cx="50.5" cy="39" r="1" fill="#fbbf24"/>
-            <path d="M47.5 41.5 Q50 43 52 41.5" stroke="#fbbf24" stroke-width="0.6" fill="none"/>
-            <line x1="44" y1="40" x2="41" y2="40" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="56" y1="40" x2="59" y2="40" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="46" y1="35" x2="44" y2="33" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="54" y1="35" x2="56" y2="33" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="46" y1="45" x2="44" y2="47" stroke="#fbbf24" stroke-width="0.6"/>
-            <line x1="54" y1="45" x2="56" y2="47" stroke="#fbbf24" stroke-width="0.6"/>
-          </svg>
+          <img class="edu-shield" src="https://upload.wikimedia.org/wikipedia/commons/8/81/Coat_of_Arms_of_the_University_of_Bath.svg" alt="University of Bath Coat of Arms" style="position:relative;z-index:1;margin-bottom:0.75rem;width:130px;height:150px;object-fit:contain;">
           <div class="edu-uni-name">University of Bath</div>
           <div class="edu-loc-row"><span class="flag-img fi-gb"></span> Bath, England</div>
         </div>
@@ -1346,28 +1316,7 @@ footer {
       <div class="edu-card reveal d2" data-uni="york">
         <div class="edu-banner">
           <div class="edu-mono">York</div>
-          <svg class="edu-shield" width="72" height="84" viewBox="0 0 72 84" fill="none" style="position:relative;z-index:1;margin-bottom:0.75rem;">
-            <path d="M4 4 h64 v40 c0 22 -14 34 -32 38 c-18-4 -32-16 -32-38 V4z" fill="rgba(21,128,61,0.2)" stroke="#22c55e" stroke-width="1.5"/>
-            <path d="M10 10 h52 v34 c0 18 -11 28 -26 32 c-15-4 -26-14 -26-32 V10z" fill="rgba(21,128,61,0.1)" stroke="#22c55e" stroke-width="0.8" opacity="0.6"/>
-            <path d="M12 48 L36 22 L60 48" stroke="#e5e7eb" stroke-width="8" fill="none" stroke-linejoin="round" opacity="0.9"/>
-            <path d="M12 48 L36 22 L60 48" stroke="none" fill="rgba(21,128,61,0.08)"/>
-            <g fill="#1e293b" opacity="0.6">
-              <circle cx="24" cy="37" r="0.8"/><path d="M23 35.5 L24 34 L25 35.5" stroke="#1e293b" stroke-width="0.4" fill="none"/>
-              <circle cx="36" cy="27" r="0.8"/><path d="M35 25.5 L36 24 L37 25.5" stroke="#1e293b" stroke-width="0.4" fill="none"/>
-              <circle cx="48" cy="37" r="0.8"/><path d="M47 35.5 L48 34 L49 35.5" stroke="#1e293b" stroke-width="0.4" fill="none"/>
-            </g>
-            <rect x="20" y="38" width="7" height="5" rx="0.5" fill="#fbbf24" stroke="#d97706" stroke-width="0.5"/>
-            <line x1="23.5" y1="38" x2="23.5" y2="43" stroke="#d97706" stroke-width="0.4"/>
-            <rect x="33" y="28" width="7" height="5" rx="0.5" fill="#fbbf24" stroke="#d97706" stroke-width="0.5"/>
-            <line x1="36.5" y1="28" x2="36.5" y2="33" stroke="#d97706" stroke-width="0.4"/>
-            <rect x="45" y="38" width="7" height="5" rx="0.5" fill="#fbbf24" stroke="#d97706" stroke-width="0.5"/>
-            <line x1="48.5" y1="38" x2="48.5" y2="43" stroke="#d97706" stroke-width="0.4"/>
-            <g transform="translate(36,58)">
-              <circle cx="0" cy="0" r="5" fill="rgba(21,128,61,0.08)" stroke="#e5e7eb" stroke-width="0.5"/>
-              <path d="M0,-4.5 L1,-1.2 L4.2,-1.2 L1.8,0.8 L2.8,4 L0,2 L-2.8,4 L-1.8,0.8 L-4.2,-1.2 L-1,-1.2 Z" fill="rgba(21,128,61,0.15)" stroke="#e5e7eb" stroke-width="0.4"/>
-              <circle cx="0" cy="0" r="1.5" fill="#fbbf24" stroke="#d97706" stroke-width="0.3"/>
-            </g>
-          </svg>
+          <img class="edu-shield" src="https://upload.wikimedia.org/wikipedia/commons/7/73/University_of_York_coat_of_arms.svg" alt="University of York Coat of Arms" style="position:relative;z-index:1;margin-bottom:0.75rem;width:130px;height:150px;object-fit:contain;">
           <div class="edu-uni-name">University of York</div>
           <div class="edu-loc-row"><span class="flag-img fi-gb"></span> York, England</div>
         </div>
@@ -1412,7 +1361,7 @@ footer {
       <a href="https://linkedin.com/in/jameshgjones" target="_blank">LinkedIn ↗</a>
     </div>
     <p class="foot-copy">&copy; 2026 James H.G. Jones</p>
-    <p class="foot-version">v1.12</p>
+    <p class="foot-version">v1.13</p>
   </div>
 </footer>
 
@@ -1530,10 +1479,6 @@ function closeModal() {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 document.querySelectorAll('.pillar[tabindex]').forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();p.click();} }));
 
-// ── Headline win expand/collapse ──
-function toggleHlWin(el) {
-  el.classList.toggle('expanded');
-}
 
 // ── Timeline scroll animation ──
 (function() {
