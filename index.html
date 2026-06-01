@@ -753,6 +753,24 @@ footer {
 .pillar:focus-visible, .hl-win:focus-visible, .b-card:focus-visible {
   outline:2px solid var(--accent); outline-offset:2px;
 }
+
+/* ═══ EVIDENCE / SOURCE CHIPS ═══ */
+.evidence { display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin-top:1.1rem; }
+.ev-label { font-family:var(--font-m); font-size:0.62rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-3); font-weight:600; }
+.evidence a {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:0.72rem; font-weight:600; color:var(--text-2); text-decoration:none;
+  padding:5px 11px; border-radius:100px;
+  background:rgba(0,0,0,0.03); border:1px solid var(--border); transition:all 0.2s;
+}
+.evidence a:hover { color:var(--accent); border-color:rgba(108,92,231,0.35); background:rgba(108,92,231,0.06); transform:translateY(-1px); }
+
+/* ═══ MOBILE NAV — scrollable pill so all links stay reachable ═══ */
+@media (max-width:640px) {
+  nav { justify-content:flex-start; padding:0 12px; }
+  .nav-pill { overflow-x:auto; max-width:100%; flex-wrap:nowrap; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .nav-pill::-webkit-scrollbar { display:none; }
+}
 </style>
 </head>
 <body>
@@ -1021,7 +1039,16 @@ footer {
           <li><strong>Delivered patent-pending parental blocking controls</strong> (application filed), coordinating 85+ people across Legal, Trust &amp; Safety, Engineering, UX, and Compliance.</li>
           <li><strong>Defined long-term platform strategy for age transition</strong>, designing a system enabling tens of millions of teens to safely access broader platform features, driving <strong>incremental Direct Messaging adoption</strong> and users opting to switch to <strong>Public account types</strong>.</li>
           <li><strong>Hired and mentored PMs</strong> across multiple levels, driving execution and stakeholder management; developed interns who exceeded goals, delivering product specs through executive review.</li>
+          <li><strong>Launched a data portability system</strong> recognized as best-in-class by European regulators; processed 100+ external applications with zero escalations.</li>
+          <li><strong>Led California non-personalized feeds compliance</strong> (code-complete), adapting the EU regulatory framework to proposed state law across product, legal, and policy teams.</li>
         </ul>
+        <div class="evidence">
+          <span class="ev-label">Evidence</span>
+          <a href="https://www.legislation.gov.au/C2024A00127/asmade/text" target="_blank" rel="noopener">Australia's Under-16 Act ↗</a>
+          <a href="https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions" target="_blank" rel="noopener">eSafety regulator ↗</a>
+          <a href="https://newsroom.tiktok.com/en-us/new-ways-we-are-supporting-parents-and-helping-teens-build-balanced-digital-habits" target="_blank" rel="noopener">TikTok Family Pairing ↗</a>
+          <a href="https://www.cnam.ie/coimisiun-na-mean-adopts-final-online-safety-code/" target="_blank" rel="noopener">Irish Online Safety Code ↗</a>
+        </div>
       </div>
     </div>
 
@@ -1035,13 +1062,18 @@ footer {
       </div>
       <div class="role-where"><span class="flag-img fi-us"></span> Mountain View, California</div>
       <ul class="role-list tt-dots">
-        <li><strong>Launched data portability system</strong> recognized as best-in-class by European regulators; processed 100+ external applications with zero escalations, striking a balance between system scalability and cost to build.</li>
         <li><strong>Architected integrated privacy control strategy</strong>, designing a unified back-end and front-end system meeting GDPR, DSA, and CCPA requirements through a single user interface — consolidating multiple regulatory obligations into simple controls and establishing the foundation for future regulatory scalability.</li>
-        <li><strong>Discovered and fixed critical data export bug</strong> affecting user data download requests across tens of thousands of daily requests, preventing significant regulatory exposure.</li>
         <li><strong>Overhauled ad labeling system</strong>, improving label viewability while ensuring regulatory compliance; launched sponsored content disclosure tool used by 5M+ creators on 17M+ posts.</li>
-        <li><strong>Led California non-personalized feeds compliance project</strong> (code-complete), adapting EU regulatory framework to proposed state law; coordinated cross-departmental effort across product, legal, and policy teams.</li>
+        <li><strong>Launched Limited Data Use controls</strong> across multiple US states for CCPA/CPRA, giving advertisers a compliant way to honor consumer opt-outs.</li>
+        <li><strong>Shipped the "Clear Activity" privacy control globally</strong>, scaling a US-only data control worldwide to meet CPRA obligations with negligible impact on core metrics.</li>
+        <li><strong>Led TikTok's first anti-discrimination ad-policy certification</strong>, requiring advertisers to certify compliance and closing a policy gap across the ads ecosystem.</li>
+        <li><strong>Discovered and fixed a critical data-export bug</strong> affecting user data-download requests across tens of thousands of daily requests, preventing significant regulatory exposure.</li>
         <li><strong>Prototyped ML system to detect sensitive advertiser keywords</strong> (medical, financial), embedding privacy safeguards into global advertising pipelines.</li>
       </ul>
+      <div class="evidence">
+        <span class="ev-label">Evidence</span>
+        <a href="https://digital-strategy.ec.europa.eu/en/news/commission-accepts-tiktoks-commitments-advertising-transparency-under-digital-services-act" target="_blank" rel="noopener">EU DSA: ad transparency ↗</a>
+      </div>
       </div>
     </div><!-- /role wrapper -->
 
@@ -1105,6 +1137,11 @@ footer {
           <li><strong>Delivered automated product feed tool</strong> from zero to beta, projected to unlock an estimated $230M annual revenue by enabling small businesses to run dynamic ads without manual setup.</li>
           <li><strong>Launched automated user tracking system</strong> that increased audience coverage ~12x, significantly expanding display ad reach for shopping advertisers.</li>
         </ul>
+        <div class="evidence">
+          <span class="ev-label">Evidence</span>
+          <a href="https://blog.google/products/ads/discovery-ads/" target="_blank" rel="noopener">Google: Discovery Ads launch ↗</a>
+          <a href="https://blog.google/products/ads/new-ad-innovations-new-consumer-journey/" target="_blank" rel="noopener">Google Marketing Live 2019 ↗</a>
+        </div>
       </div>
     </div>
 
@@ -1400,7 +1437,7 @@ footer {
       <a href="https://linkedin.com/in/jameshgjones" target="_blank">LinkedIn ↗</a>
     </div>
     <p class="foot-copy">&copy; 2026 James H.G. Jones</p>
-    <p class="foot-version">v1.16</p>
+    <p class="foot-version">v1.17</p>
   </div>
 </footer>
 
