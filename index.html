@@ -672,6 +672,12 @@ footer {
 .tl-company-node.tl-cn-tt.active { background:var(--tiktok-c); box-shadow:0 0 28px rgba(254,44,85,0.5); }
 .tl-company-node.tl-cn-gg.active { background:var(--g-blue); box-shadow:0 0 28px rgba(66,133,244,0.5); }
 .tl-company-node.tl-cn-ec.active { background:var(--text-3); box-shadow:0 0 16px rgba(106,106,136,0.4); }
+  .tl-section.tl-ec { padding-bottom:26px; }
+  .tl-end { position:absolute; left:11px; bottom:0; width:15px; height:15px; border-radius:50%;
+    background:var(--bg); border:3px solid var(--text-3); z-index:3; }
+  .tl-end-year { position:absolute; left:-14px; top:50%; transform:translate(-100%,-50%);
+    font-family:var(--font-m); font-size:0.75rem; color:var(--text-2); white-space:nowrap; }
+  @media (max-width:960px){ .tl-end { left:3px; } .tl-end-year { display:none; } }
 .tl-company-node svg { width:14px; height:14px; }
 
 /* Small role nodes */
@@ -1269,13 +1275,11 @@ footer {
 
     <div style="position:relative">
       <div class="tl-role-node" style="top:28px"></div>
-      <div class="tl-date-label">2009</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Contract Project Manager</div>
-          <div class="role-when">Freelancer</div>
         </div>
-        <div class="role-where"><span class="flag-img fi-gb"></span> London, UK</div>
+        <div class="role-where"><span class="flag-img fi-gb"></span> Freelancer · London, UK</div>
         <ul class="role-list ec-dots">
           <li><strong>Managed technology implementation projects</strong> for enterprise clients across London, overseeing end-to-end delivery.</li>
           <li><strong>Coordinated cross-functional teams</strong> of developers, designers, and stakeholders to deliver projects on time and within budget.</li>
@@ -1285,13 +1289,11 @@ footer {
 
     <div style="position:relative">
       <div class="tl-role-node" style="top:28px"></div>
-      <div class="tl-date-label">2008</div>
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Project Manager</div>
-          <div class="role-when">ADC College</div>
         </div>
-        <div class="role-where"><span class="flag-img fi-gb"></span> London, UK</div>
+        <div class="role-where"><span class="flag-img fi-gb"></span> ADC College · London, UK</div>
         <ul class="role-list ec-dots">
           <li><strong>Oversaw educational technology projects</strong> and student placement programmes, managing relationships with partner organizations.</li>
           <li><strong>Streamlined placement coordination</strong> processes, improving student-employer matching efficiency.</li>
@@ -1304,15 +1306,15 @@ footer {
       <div class="role reveal">
         <div class="role-top">
           <div class="role-name">Sales Manager</div>
-          <div class="role-when">TES Global</div>
         </div>
-        <div class="role-where"><span class="flag-img fi-gb"></span> London, UK</div>
+        <div class="role-where"><span class="flag-img fi-gb"></span> TES Global · London, UK</div>
         <ul class="role-list ec-dots">
           <li><strong>Led sales initiatives</strong> for the Times Educational Supplement's digital advertising products, driving revenue growth.</li>
           <li><strong>Supported the chief editor</strong> in day-to-day activities and team coordination across editorial and sales functions.</li>
         </ul>
       </div>
     </div>
+      <div class="tl-end"><span class="tl-end-year">2008</span></div>
 
     </div><!-- /tl-section tl-ec -->
   </div>
@@ -1473,7 +1475,7 @@ footer {
       <a href="https://linkedin.com/in/jameshgjones" target="_blank">LinkedIn ↗</a>
     </div>
     <p class="foot-copy">&copy; 2026 James H.G. Jones</p>
-    <p class="foot-version">v1.28</p>
+    <p class="foot-version">v1.29</p>
   </div>
 </footer>
 
