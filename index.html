@@ -783,8 +783,29 @@ footer {
   .nav-pill::-webkit-scrollbar { display:none; }
 }
 </style>
+<noscript><style>
+    .reveal{opacity:1!important;transform:none!important}
+    .sk-card,.b-card,.pillar{opacity:1!important}
+  </style></noscript>
+<style>
+    .skip-link{position:absolute;left:-9999px;top:0;z-index:500;background:var(--accent);color:#fff;
+      padding:0.7rem 1.1rem;border-radius:0 0 10px 0;font-size:0.85rem;font-weight:600;text-decoration:none}
+    .skip-link:focus{left:0}
+    @keyframes jumpFlash{0%{box-shadow:0 0 0 0 rgba(108,92,231,0.45)}100%{box-shadow:0 0 0 18px rgba(108,92,231,0)}}
+    .jump-flash{animation:jumpFlash 1.4s ease-out 2;border-radius:var(--r)}
+    .modal-jump{display:inline-block;margin:0 0 1rem;color:var(--accent);font-weight:600;
+      font-size:0.85rem;text-decoration:none}
+    .modal-jump:hover{text-decoration:underline}
+    .resume-mobile-actions{display:none;flex-direction:column;gap:0.75rem;align-items:center}
+    @media (max-width:768px){
+      .resume-preview-frame{display:none}
+      .resume-save-btn{display:none}
+      .resume-mobile-actions{display:flex}
+    }
+  </style>
 </head>
 <body>
+<a class="skip-link" href="#hero">Skip to content</a>
 
 <!-- Ambient -->
 <div class="ambient">
@@ -850,7 +871,7 @@ footer {
 
       <!-- Pillar cards with CUSTOM SVG ICONS — clickable -->
       <div class="pillars">
-        <div class="pillar" tabindex="0" role="button" onclick="openModal('Trust &amp; Safety','Owns the multi-year roadmap for youth safety and content moderation at TikTok — parental controls, Kids Mode and age-based feature access for tens of millions of under-18 users. Delivered patent-pending parental blocking controls for the Irish Online Safety Commission, coordinating 85+ people across five departments, and rebuilt the Kids Mode content pipeline with ML.')">
+        <div class="pillar" tabindex="0" role="button" onclick="openModal('Trust &amp; Safety','Owns the multi-year roadmap for youth safety and content moderation at TikTok — parental controls, Kids Mode and age-based feature access for tens of millions of under-18 users. Delivered patent-pending parental blocking controls for the Irish Online Safety Commission, coordinating 85+ people across five departments, and rebuilt the Kids Mode content pipeline with ML.',null,'#exp-tiktok-lead')">
           <div class="pillar-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2l8 4v6c0 5.25-3.4 10.1-8 12-4.6-1.9-8-6.75-8-12V6l8-4z"/>
@@ -861,7 +882,7 @@ footer {
           <p>Youth Safety · Content Moderation</p>
           <div class="pillar-expand">+</div>
         </div>
-        <div class="pillar" tabindex="0" role="button" onclick="openModal('Advertising','A decade in advertising at Google — ad sales, solutions consulting, product marketing and product management across ML-powered targeting and automation. At TikTok, led ads privacy and policy: rebuilt the global ad labeling system, launched the first anti-discrimination advertising policy with in-product advertiser certification, and shipped keyword filtering on ad content.')">
+        <div class="pillar" tabindex="0" role="button" onclick="openModal('Advertising','A decade in advertising at Google — ad sales, solutions consulting, product marketing and product management across ML-powered targeting and automation. At TikTok, led ads privacy and policy: rebuilt the global ad labeling system, launched the first anti-discrimination advertising policy with in-product advertiser certification, and shipped keyword filtering on ad content.',null,'#exp-tiktok-ads')">
           <div class="pillar-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 10v4a1 1 0 0 0 1 1h3l6 4V5L7 9H4a1 1 0 0 0-1 1z"/>
@@ -874,7 +895,7 @@ footer {
           <p>Ads Policy · Brand Safety</p>
           <div class="pillar-expand">+</div>
         </div>
-        <div class="pillar" tabindex="0" role="button" onclick="openModal('ML/AI Builder','Built ML-powered products at both TikTok and Google. At TikTok, used ML to transform Kids Mode content pipelines. At Google, built an ML-powered prospecting product from zero to $135M annual revenue.')">
+        <div class="pillar" tabindex="0" role="button" onclick="openModal('ML/AI Builder','Built ML-powered products at both TikTok and Google. At TikTok, used ML to transform Kids Mode content pipelines. At Google, built an ML-powered prospecting product from zero to $135M annual revenue.',null,'#exp-google-pm')">
           <div class="pillar-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2a6 6 0 0 1 6 6c0 2.2-1.2 4.1-3 5.2V16a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-2.8C7.2 12.1 6 10.2 6 8a6 6 0 0 1 6-6z"/>
@@ -888,7 +909,7 @@ footer {
           <p>Content Moderation · Targeting · Automation</p>
           <div class="pillar-expand">+</div>
         </div>
-        <div class="pillar" tabindex="0" role="button" onclick="openModal('Regulatory Expert','Deep expertise in global privacy regulation including GDPR, DSA, and CCPA. Designed unified privacy control systems, led regulatory compliance for Australia\'s under-16 ban, and launched best-in-class data portability systems.')">
+        <div class="pillar" tabindex="0" role="button" onclick="openModal('Regulatory Expert','Deep expertise in global privacy regulation including GDPR, DSA, and CCPA. Designed unified privacy control systems, led regulatory compliance for Australia\'s under-16 ban, and launched best-in-class data portability systems.',null,'#exp-tiktok-lead')">
           <div class="pillar-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 3v18"/><path d="M5 7l7-4 7 4"/>
@@ -1424,6 +1445,9 @@ footer {
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Save as PDF
     </button>
+    <div class="resume-mobile-actions reveal d1">
+      <a class="resume-save-btn" href="resume-template.html" target="_blank" rel="noopener">Open resume &#8599;</a>
+    </div>
     <div class="resume-preview-frame reveal d2">
       <iframe id="resumeFrame" src="resume-template.html" title="Resume Preview"></iframe>
     </div>
@@ -1435,6 +1459,7 @@ footer {
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalText">
     <div class="modal-title" id="modalTitle"></div>
     <div class="modal-text" id="modalText"></div>
+    <a class="modal-jump" id="modalJump" href="#" style="display:none">See in experience &rarr;</a>
     <button class="modal-close" onclick="closeModal()">Close</button>
   </div>
 </div>
@@ -1448,7 +1473,7 @@ footer {
       <a href="https://linkedin.com/in/jameshgjones" target="_blank">LinkedIn ↗</a>
     </div>
     <p class="foot-copy">&copy; 2026 James H.G. Jones</p>
-    <p class="foot-version">v1.26</p>
+    <p class="foot-version">v1.27</p>
   </div>
 </footer>
 
@@ -1498,13 +1523,33 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.06, rootMargin: '0px 0px -80px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+setTimeout(function(){
+  document.querySelectorAll('.reveal:not(.vis)').forEach(function(el){
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('vis');
+  });
+}, 2500);
+window.addEventListener('error', function(){
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('vis'); });
+});
+
+function jumpTo(sel){
+  var t = document.querySelector(sel);
+  if(!t) return;
+  t.scrollIntoView({ behavior:'smooth' });
+  try { history.pushState(null, '', sel); } catch(e) {}
+  t.classList.remove('jump-flash');
+  void t.offsetWidth;
+  t.classList.add('jump-flash');
+  setTimeout(function(){ t.classList.remove('jump-flash'); }, 3000);
+}
 
 // ── Smooth scroll for nav and tenure chips ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
+    var href = a.getAttribute('href');
+    if (!href || href === '#' || !document.querySelector(href)) return;
     e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    jumpTo(href);
   });
 });
 
@@ -1589,13 +1634,20 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 // ── Modal for pillar cards ──
 var lastFocused = null;
-function openModal(title, text, theme) {
+function openModal(title, text, theme, jump) {
   var modal = document.getElementById('pillarModal');
   lastFocused = document.activeElement;
   modal.classList.remove('modal-tt','modal-gg');
   if (theme) modal.classList.add('modal-' + theme);
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalText').textContent = text;
+  var jl = document.getElementById('modalJump');
+  if (jl) {
+    if (jump && document.querySelector(jump)) {
+      jl.style.display = 'inline-block';
+      jl.onclick = function(e){ e.preventDefault(); closeModal(); jumpTo(jump); };
+    } else { jl.style.display = 'none'; jl.onclick = null; }
+  }
   modal.classList.add('active');
   var btn = modal.querySelector('.modal-close'); if (btn) btn.focus();
 }
@@ -1620,7 +1672,7 @@ document.querySelectorAll('.b-card[data-jump]').forEach(function(c){
   hint.className = 'b-jump';
   hint.textContent = 'See in experience ↓';
   c.appendChild(hint);
-  function go(){ var t = document.querySelector(sel); if(t) t.scrollIntoView({ behavior:'smooth' }); }
+  function go(){ jumpTo(sel); }
   c.addEventListener('click', go);
   c.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
 });
@@ -1668,5 +1720,22 @@ document.querySelectorAll('.b-card[data-jump]').forEach(function(c){
 
 </script>
 
+<script>
+(function(){
+  var f = document.getElementById('resumeFrame');
+  if (!f) return;
+  function fit(){
+    try {
+      var d = f.contentDocument;
+      if (!d || !d.body) return;
+      var hgt = Math.max(d.body.scrollHeight, d.documentElement.scrollHeight);
+      if (hgt > 300) f.style.height = (hgt + 8) + 'px';
+    } catch(e) {}
+  }
+  f.addEventListener('load', function(){ fit(); setTimeout(fit, 400); });
+  window.addEventListener('resize', fit);
+  if (f.contentDocument && f.contentDocument.readyState === 'complete') fit();
+})();
+</script>
 </body>
 </html>
