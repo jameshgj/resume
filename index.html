@@ -273,34 +273,20 @@ section { padding:5rem 0; position:relative; }
   width:180px; height:180px; opacity:0.04; pointer-events:none;
 }
 
-.b-region {
-  display:inline-flex; align-items:center; gap:8px;
-  font-size:0.73rem; color:var(--text-2); font-weight:600;
-  letter-spacing:0.8px; text-transform:uppercase; margin-bottom:1.25rem;
-}
+.b-region { display:inline-flex; align-items:center; gap:8px; font-size:0.68rem; color:var(--text-3); font-weight:600; letter-spacing:0.9px; text-transform:uppercase; margin-bottom:0.7rem; }
 .b-region .flag-img {
   width:22px; height:15px; border-radius:2px; display:inline-block;
   background-size:cover; background-position:center;
   box-shadow:0 0 0 1px rgba(0,0,0,0.1);
 }
 
-.b-metric {
-  font-family:var(--font-d);
-  font-size:2.4rem; font-weight:700; letter-spacing:-1px;
-  margin-bottom:0.5rem;
-}
-.b-metric.gradient-accent {
-  background:linear-gradient(135deg, var(--accent), var(--accent-2));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-}
-.b-metric.gradient-tiktok {
-  background:linear-gradient(135deg, var(--tiktok-c), var(--tiktok-p));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-}
-.b-metric.gradient-google {
-  background:linear-gradient(135deg, var(--g-blue), var(--g-green));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-}
+.b-metric { margin-top:auto; align-self:flex-start; display:inline-flex; align-items:center;
+    font-family:var(--font-m); font-size:0.7rem; font-weight:600; letter-spacing:0.2px; line-height:1.4;
+    padding:0.42rem 0.78rem; border-radius:999px; border:1px solid var(--border);
+    background:var(--bg-card); color:var(--text-2); }
+  .b-metric.m-accent { color:var(--accent);   border-color:rgba(108,92,231,0.22); background:rgba(108,92,231,0.06); }
+  .b-metric.m-tiktok { color:var(--tiktok-p); border-color:rgba(224,35,78,0.22);  background:rgba(224,35,78,0.06); }
+  .b-metric.m-google { color:var(--g-blue);   border-color:rgba(66,133,244,0.22); background:rgba(66,133,244,0.06); }
 .b-card h3 { font-size:1.32rem; font-weight:700; line-height:1.32; margin-bottom:0.6rem; color:var(--text); letter-spacing:-0.3px; }
 .b-card p { font-size:0.9rem; color:var(--text-2); line-height:1.7; margin-bottom:1.15rem; }
 .b-card[data-jump] { cursor:pointer; }
@@ -812,7 +798,7 @@ footer {
 <nav id="nav">
   <div class="nav-pill">
     <a href="#hero">Home</a>
-    <a href="#impact">Impact</a>
+    <a href="#impact">Highlights</a>
     <a href="#experience">Experience</a>
     <a href="#tiktok-section" class="nav-co" data-co="tt">
       <svg viewBox="0 0 48 56" fill="none" width="11" height="13"><path d="M34.9 2.2h-7.3v29.5c0 3.2-2.6 5.8-5.8 5.8-3.2 0-5.8-2.6-5.8-5.8s2.6-5.8 5.8-5.8c.6 0 1.2.1 1.8.3v-7.7c-.6-.1-1.2-.1-1.8-.1-7.5 0-13.5 6-13.5 13.5s6 13.5 13.5 13.5 13.5-6 13.5-13.5V16.3c2.8 2 6.2 3.2 9.8 3.2v-7.7c-5-.3-9.2-4.2-10.2-9.6z" fill="currentColor"/></svg>
@@ -942,9 +928,9 @@ footer {
 <section id="impact">
   <div class="wrap">
     <div class="reveal">
-      <div class="sh-label">Selected Impact</div>
-      <h2 class="sh-title">What I've Delivered</h2>
-      <p class="sh-desc">Highlights from building products that protect millions of users and drive nine-figure revenue across three continents.</p>
+      <div class="sh-label">Highlights</div>
+      <h2 class="sh-title">Selected Work</h2>
+      <p class="sh-desc">A few things I've built — protecting millions of users and driving nine-figure revenue across three continents.</p>
     </div>
 
     <div class="bento">
@@ -1462,7 +1448,7 @@ footer {
       <a href="https://linkedin.com/in/jameshgjones" target="_blank">LinkedIn ↗</a>
     </div>
     <p class="foot-copy">&copy; 2026 James H.G. Jones</p>
-    <p class="foot-version">v1.25</p>
+    <p class="foot-version">v1.26</p>
   </div>
 </footer>
 
