@@ -37,6 +37,8 @@
   }
   .in-iframe .toolbar { display: none !important; }
   .in-iframe .page { margin-top: 0; }
+  /* Site preview only: the parent page sets --preview-zoom to enlarge the page to match the site's text size. Never applies to print/PDF. */
+  @media screen { .in-iframe .page { zoom: var(--preview-zoom, 1); } }
   .toolbar button {
     background: var(--navy); color: #fff; border: none;
     padding: 8px 22px; border-radius: 4px; font: 600 13px var(--font);
