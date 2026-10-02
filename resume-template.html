@@ -232,6 +232,36 @@
     @page { size: letter; margin: 0.25in 0 0 0; }
     @page:first { margin: 0; }
   }
+
+  /* Phones and narrow frames (screen only): reflow the letter page to the width available, with readable
+     text, instead of a shrunken page. Kept last so it overrides the letter layout above.
+     Printing is untouched: @media print still gets the fixed 8.5in page. */
+  @media screen and (max-width: 815px) {
+    body:not(.in-iframe) { padding-top: 52px; }
+    .toolbar { padding: 8px 14px; }
+    .toolbar .hint { display: none; }
+    .page { width: auto; min-height: 0; padding: 22px 18px 28px; }
+    .hdr { padding-bottom: 10px; margin-bottom: 12px; }
+    .hdr-name { font-size: clamp(20px, 6.2vw, 30px); letter-spacing: 0.16em; margin-bottom: 6px; }
+    .hdr-sub { font-size: 10px; letter-spacing: 1.5px; line-height: 1.6; margin-bottom: 8px; }
+    .hdr-contact { font-size: 13px; display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 14px; }
+    .hdr-sep { display: none; }
+    .sum { font-size: 14.5px; line-height: 1.6; margin: 12px 0 10px; padding-bottom: 12px; }
+    .sec { font-size: 11.5px; letter-spacing: 3px; margin: 20px 0 10px; }
+    .co { margin-bottom: 14px; padding-top: 10px; }
+    .co-top { flex-wrap: wrap; gap: 0 10px; }
+    .co-n { font-size: 16.5px; }
+    .co-d { font-size: 12.5px; }
+    .co-r { font-size: 13.5px; line-height: 1.45; margin: 2px 0 10px; }
+    .bl li { font-size: 14.5px; line-height: 1.6; margin-bottom: 9px; padding-left: 16px; }
+    .earl-inline { font-size: 14px; flex-direction: column; gap: 4px; }
+    .earl-inline .earl-item { white-space: normal; }
+    .earl-inline .earl-sep { display: none; }
+    .edu { font-size: 14px; line-height: 1.55; margin-bottom: 6px; }
+    .skt, .skt tbody, .skt tr, .skt td { display: block; width: auto; }
+    .skt td { font-size: 14px; line-height: 1.55; padding: 0; }
+    .skt td.sk-l { font-size: 12px; letter-spacing: 1px; padding: 12px 0 2px; }
+  }
 </style>
 </head>
 <body>

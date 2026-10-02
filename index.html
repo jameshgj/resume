@@ -791,6 +791,10 @@ footer {
   nav { justify-content:flex-start; padding:0 12px; }
   .nav-pill { overflow-x:auto; max-width:100%; flex-wrap:nowrap; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
   .nav-pill::-webkit-scrollbar { display:none; }
+  /* fade whichever edge has more links past it */
+  .nav-pill.fade-r { -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent); mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent); }
+  .nav-pill.fade-l { -webkit-mask-image:linear-gradient(to right,transparent,#000 32px); mask-image:linear-gradient(to right,transparent,#000 32px); }
+  .nav-pill.fade-l.fade-r { -webkit-mask-image:linear-gradient(to right,transparent,#000 32px,#000 calc(100% - 32px),transparent); mask-image:linear-gradient(to right,transparent,#000 32px,#000 calc(100% - 32px),transparent); }
 }
 </style>
 <noscript><style>
@@ -806,11 +810,16 @@ footer {
     .modal-jump{display:inline-block;margin:0 0 1rem;color:var(--accent);font-weight:600;
       font-size:0.85rem;text-decoration:none}
     .modal-jump:hover{text-decoration:underline}
-    .resume-mobile-actions{display:none;flex-direction:column;gap:0.75rem;align-items:center}
+    .resume-mobile-actions{display:none;flex-direction:column;gap:0.6rem;align-items:center;margin-bottom:1.5rem}
+    .resume-mobile-actions .resume-save-btn{margin-top:0}
+    .rm-note{font-size:0.78rem;color:var(--text-3);line-height:1.5;max-width:34ch;margin:0}
     @media (max-width:768px){
-      .resume-preview-frame{display:none}
-      .resume-save-btn{display:none}
+      button.resume-save-btn{display:none}
       .resume-mobile-actions{display:flex}
+    }
+    @media (max-width:640px){
+      .resume-preview-section .wrap{padding:0 12px}
+      .resume-preview-frame{border-radius:12px}
     }
   </style>
 </head>
@@ -1454,7 +1463,8 @@ footer {
       Save as PDF
     </button>
     <div class="resume-mobile-actions reveal d1">
-      <a class="resume-save-btn" href="resume-template.html" target="_blank" rel="noopener">Open resume &#8599;</a>
+      <a class="resume-save-btn" href="resume-template.html" target="_blank" rel="noopener">Open printable resume &#8599;</a>
+      <p class="rm-note">Opens the print-ready page. Tap <strong>Save as PDF</strong> at the top, then save it from your phone's print screen.</p>
     </div>
     <div class="resume-preview-frame reveal d2">
       <iframe id="resumeFrame" src="resume-template.html" title="Resume Preview"></iframe>
@@ -1481,7 +1491,7 @@ footer {
       <a href="https://linkedin.com/in/jameshgjones" target="_blank">LinkedIn ↗</a>
     </div>
     <p class="foot-copy">&copy; 2026 James H.G. Jones</p>
-    <p class="foot-version">v1.33</p>
+    <p class="foot-version">v1.34</p>
   </div>
 </footer>
 
@@ -1596,7 +1606,33 @@ window.addEventListener('scroll', () => {
       a.classList.add('active', 'nav-' + co);
     }
   });
+  keepPillInView();
 }, { passive: true });
+
+// ── Phones: the nav pill scrolls sideways, so slide it to keep the active link in view ──
+const navPill = document.querySelector('.nav-pill');
+let pillTarget = null;
+function pillFade(){
+  if (!navPill) return;
+  var can = navPill.scrollWidth > navPill.clientWidth + 1;
+  navPill.classList.toggle('fade-l', can && navPill.scrollLeft > 2);
+  navPill.classList.toggle('fade-r', can && navPill.scrollLeft + navPill.clientWidth < navPill.scrollWidth - 2);
+}
+function keepPillInView(){
+  if (!navPill || navPill.scrollWidth <= navPill.clientWidth + 1) return;
+  var a = navPill.querySelector('a.nav-co.active') || navPill.querySelector('a.active');
+  if (a === pillTarget) return;
+  pillTarget = a;
+  if (!a) { navPill.scrollTo({ left: 0, behavior: 'smooth' }); return; }
+  var pr = navPill.getBoundingClientRect(), ar = a.getBoundingClientRect();
+  var left = navPill.scrollLeft + (ar.left - pr.left) - (pr.width - ar.width) / 2;
+  navPill.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+}
+if (navPill) {
+  navPill.addEventListener('scroll', pillFade, { passive: true });
+  window.addEventListener('resize', function(){ pillTarget = undefined; pillFade(); keepPillInView(); });
+  pillFade();
+}
 
 function getActiveCompany() {
   var threshold = 300;
@@ -1732,15 +1768,17 @@ document.querySelectorAll('.b-card[data-jump]').forEach(function(c){
 (function(){
   var f = document.getElementById('resumeFrame');
   if (!f) return;
-  // Scale the letter-size page (8.5in = 816px) up to fill the frame, so the preview's
+  // Wide frames: scale the letter-size page (8.5in = 816px) up to fill the frame, so the preview's
   // bullet text (8.5pt) reads at the same size as the site's body text (0.9rem = 14.4px).
-  // Screen-only: the template ignores --preview-zoom when printing, so the PDF is unchanged.
+  // Frames narrower than the page (phones, small tablets): no zoom — the template reflows to the
+  // frame width with phone-sized text instead of shrinking the whole page.
+  // Screen-only: the template ignores both when printing, so the PDF is unchanged.
   var PAGE_W = 816, MAX_ZOOM = 1.27;
   function fit(){
     try {
       var d = f.contentDocument;
       if (!d || !d.body) return;
-      var z = Math.min(MAX_ZOOM, f.clientWidth / PAGE_W);
+      var z = f.clientWidth >= PAGE_W ? Math.min(MAX_ZOOM, f.clientWidth / PAGE_W) : 1;
       d.documentElement.style.setProperty('--preview-zoom', z.toFixed(4));
       // Measure the content itself (not the document, which never reports less than the
       // current frame height) so the frame can shrink as well as grow on resize.
