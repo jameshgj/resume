@@ -816,6 +816,8 @@ footer {
     @media (max-width:768px){
       button.resume-save-btn{display:none}
       .resume-mobile-actions{display:flex}
+      /* the reflowed resume is several screens tall, so it never reaches the reveal threshold — show it outright */
+      .resume-preview-frame.reveal{opacity:1;transform:none;transition:none}
     }
     @media (max-width:640px){
       .resume-preview-section .wrap{padding:0 12px}
@@ -1491,7 +1493,7 @@ footer {
       <a href="https://linkedin.com/in/jameshgjones" target="_blank">LinkedIn ↗</a>
     </div>
     <p class="foot-copy">&copy; 2026 James H.G. Jones</p>
-    <p class="foot-version">v1.34</p>
+    <p class="foot-version">v1.35</p>
   </div>
 </footer>
 
