@@ -222,13 +222,19 @@
   /* ===== PRINT / PDF ===== */
   @media print {
     .toolbar { display: none !important; }
-    body { background: #fff; margin: 0; }
+    html, body { background: #fff; margin: 0; height: auto; }
     .page {
       margin: 0;
       min-height: auto;
+      width: 8.5in;
+      padding: 0.3in var(--mx) 0.2in;   /* v1.37: a little tighter than screen so the whole resume lands on two pages */
     }
-    .co { page-break-inside: avoid; }
-    .skt { page-break-inside: avoid; }
+    .co { page-break-inside: auto; break-inside: auto; }     /* a role may cross the page break; its header must not be stranded */
+    .co-top, .role, .role-top, .rt { page-break-after: avoid; break-after: avoid; }
+    .bl li { page-break-inside: avoid; break-inside: avoid; }
+    .page { zoom: 0.97; }                                     /* 3% smaller in print only: enough to keep Skills on page 2 */
+    .sec { page-break-after: avoid; break-after: avoid; }   /* v1.37: never strand a heading at the foot of a page */
+    .skt tr { page-break-inside: avoid; break-inside: avoid; }   /* the table may split between rows, never inside one */
     @page { size: letter; margin: 0.25in 0 0 0; }
     @page:first { margin: 0; }
   }
@@ -416,5 +422,13 @@
 
 </div><!-- #resume -->
 
+<script>
+  /* v1.37: Chrome names a saved PDF after the page title. Use a clean file name while printing, then restore. */
+  (function(){
+    var orig = document.title;
+    window.addEventListener('beforeprint', function(){ document.title = 'James_Jones_Resume'; });
+    window.addEventListener('afterprint',  function(){ document.title = orig; });
+  })();
+</script>
 </body>
 </html>
