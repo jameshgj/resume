@@ -116,7 +116,7 @@
   .sec::after {
     content: '';
     flex: 1;
-    height: 0.75px;
+    height: 1px;          /* v1.39: was 0.75px, which Chrome on Mac rounded away on screen and in the PDF */
     background: var(--rule);
   }
 
