@@ -116,8 +116,8 @@
   .sec::after {
     content: '';
     flex: 1;
-    height: 1px;          /* v1.39: was 0.75px, which Chrome on Mac rounded away on screen and in the PDF */
-    background: var(--rule);
+    height: 0;
+    border-top: 1px solid var(--rule);   /* v1.40: a border, not a background — Chrome drops backgrounds when printing unless "Background graphics" is ticked */
   }
 
   /* ===== COMPANY BLOCK — clean, no bg ===== */
