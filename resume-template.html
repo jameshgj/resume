@@ -232,9 +232,10 @@
     .co { page-break-inside: auto; break-inside: auto; }     /* a role may cross the page break; its header must not be stranded */
     .co-top, .role, .role-top, .rt { page-break-after: avoid; break-after: avoid; }
     .bl li { page-break-inside: avoid; break-inside: avoid; }
-    .page { zoom: 0.97; }                                     /* 3% smaller in print only: enough to keep Skills on page 2 */
+    .page { zoom: 0.96; }                                     /* v1.38: 4% smaller in print only, so Skills stays on page 2 with Google starting there */
     .sec { page-break-after: avoid; break-after: avoid; }   /* v1.37: never strand a heading at the foot of a page */
     .skt tr { page-break-inside: avoid; break-inside: avoid; }   /* the table may split between rows, never inside one */
+    .co-p2 { page-break-before: always; break-before: page; }   /* v1.38: Google starts page 2, not a stranded header at the foot of page 1 */
     @page { size: letter; margin: 0.25in 0 0 0; }
     @page:first { margin: 0; }
   }
@@ -332,7 +333,7 @@
     </ul>
   </div>
 
-  <div class="co">
+  <div class="co co-p2">
     <div class="co-top">
       <span class="co-n">Google</span>
       <span class="co-d">05/2019 – 04/2021</span>
